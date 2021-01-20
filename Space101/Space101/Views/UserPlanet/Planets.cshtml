@@ -1,0 +1,48 @@
+﻿
+
+<div class="container-fluid" id="planet-container">
+
+    <div id="search-bar">
+        <select id="select-climate">
+            <option value="" selected>All Climates</option>
+        </select>
+        <select id="select-terrain">
+            <option value="" selected>All Terrains</option>
+        </select>
+        <select id="select-sort">
+            <option value="ASC" selected>Name Ascending</option>
+            <option value="DESC">Name Descending</option>
+        </select>
+        <input id="search-input" type="text" placeholder="Search by Name" value="" />
+        <span>
+            <img src="~/images/search.png" alt="search icon"/>
+        </span>
+    </div>
+
+    <div class="row" id="planet-row">
+
+    </div>
+
+</div>
+
+
+@Styles.Render("~/Content/custom/planetsUser.css")
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/pagination")
+    @Scripts.Render("~/bundles/planetsUsers")
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            PlanetsUsersController.init();
+
+        });
+
+    </script>
+}
+

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Space101.ViewModels.ApplicationUserViewModels.ApplicationUserContainerViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Users</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no users yet</p>
+}
+else
+{
+    <table class="table table-responsive table-striped text-center table-bordered" id="tickets">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NickName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Race)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HomePlanet)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                       @Html.DisplayFor(modelItem => user.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.NickName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.Race)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => user.HomePlanet)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/user")
+
+    <script>
+        $(document).ready(function () {
+            $("#tickets").DataTable();
+        });
+    </script>
+}

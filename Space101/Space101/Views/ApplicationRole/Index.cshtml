@@ -1,0 +1,45 @@
+﻿@model Space101.ViewModels.ApplicationRoleViewModels.ApplicationRoleContainerViewModel
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-8 col-xs-12 control-div">
+
+            <h4>Application Role Control</h4>
+
+            <hr />
+
+            <div class="role-div">
+                @Html.Partial("_ApplicationRoleInfo")
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 col-xs-12 form-div">
+
+            @Html.Partial("_ApplicationRoleForm", Model.ApplicationRoleForm)
+
+        </div>
+
+    </div>
+
+
+</div>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/applicationrole")
+
+    <script>
+        $(document).ready(function () {
+            ApplicationRoleController.init($('.role-div'));
+        });
+    </script>
+    
+
+}
+
+@Styles.Render("~/Content/custom/applicationRole.css")

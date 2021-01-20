@@ -1,0 +1,146 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.RaceViewModels.RaceViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Races</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no races yet</p>
+    if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+    {
+        @Html.ActionLink("Create Race", "Manipulate", new { id = 0 }, new { @class = "btn btn-primary" })
+    }
+
+}
+else
+{
+    <table class="table table-responsive table-striped text-center table-bordered" id="races">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Avatar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RaceClassification.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AverageHeight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Planets[0].Name)
+                </th>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th class="text-center">
+                        @Html.ActionLink("Create New", "Manipulate", new { id = 0 }, new { @class = "btn btn-primary" })
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var race in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => race.ID)
+                    </td>
+                    <td>
+                        @if (race.Avatar.Length <= 0)
+                        {
+                            <img class="img-responsive  img-circle" style="max-width:80px" src="~/images/null-image.jpg" />
+                        }
+                        else
+                        {
+                            <img class="img-responsive img-circle" style="max-width:80px" src="data:image/jpg;base64,@(Convert.ToBase64String(race.Avatar))" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => race.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => race.RaceClassification.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => race.AverageHeight)
+                    </td>
+                    <td>
+                        @if (!race.Planets.Any())
+                        {
+                            @:no planets available
+                        }
+                        else
+                        {
+                            var count = race.Planets.Count();
+                            foreach (var planets in race.Planets)
+                            {
+                                @planets.Name
+                                if (count > 1)
+                                {
+                                    @: |
+                                }
+                                count--;
+                            }
+                        }
+                    </td>
+                    @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td>
+                            <span>@Html.ActionLink("Edit", "Manipulate", "Race", new { id = race.ID }, new { @class = "btn btn-success" })</span>
+                            <button class="btn btn-danger js-delete" data-race-id="@race.ID">Delete</button>
+                            @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                            {
+                                <button class="btn btn-danger js-hard-delete" data-race-id="@race.ID">Hard Delete</button>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts
+{
+        @Scripts.Render("~/bundles/race")
+
+        <script>
+
+            $(document).ready(function () {
+                RaceController.initializeDataTable("#races")
+                RaceController.initializeDelete("#races", CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+                RaceController.initializeHardDelete("#races", CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+
+        </script>
+    }
+}
+else
+{
+    @section scripts
+{
+        @Scripts.Render("~/bundles/race")
+
+        <script>
+
+            $(document).ready(function () {
+                RaceController.initializeDataTable("#races")
+                RaceController.initializeDelete("#races", CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+
+        </script>
+    }
+}
+

@@ -1,0 +1,43 @@
+﻿
+
+<div class="container-fluid" id="races-container">
+
+    <div id="search-bar">
+        <select id="select-classification">
+            <option value="" selected>All Classifications</option>
+        </select>
+        <select id="select-sort">
+            <option value="ASC" selected>Name Ascending</option>
+            <option value="DESC">Name Descending</option>
+        </select>
+        <input id="search-input" type="text" placeholder="Search by Name" value="" />
+        <span>
+            <img src="~/images/search.png" alt="search icon" />
+        </span>
+    </div>
+
+    <div class="row" id="race-row">
+
+    </div>
+
+</div>
+
+@Styles.Render("~/Content/custom/racesUser.css")
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/pagination")
+    @Scripts.Render("~/bundles/racesUsers")
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            RacesUsersController.init();
+
+        });
+
+    </script>
+}

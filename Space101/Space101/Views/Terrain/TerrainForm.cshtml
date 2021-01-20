@@ -1,0 +1,55 @@
+﻿@model Space101.ViewModels.TerrainViewModels.TerrainFormViewModel
+
+@{
+    ViewBag.Title = "TerrainForm";
+}
+<br />
+@if (Model.Action == "New")
+{
+    <h2>Create New Terrain</h2>
+}
+else
+{
+    <h2>Edit Terrain With Id: @Model.Id</h2>
+}
+<br />
+@using (Html.BeginForm("Save", "Terrain"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(t => t.Id)
+
+    <div class="row">
+
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.Name, new { @class = "col-form-label" })*
+                @Html.TextBoxFor(t => t.Name, new { @class = "form-control", placeholder = "e.g. Desert" })
+                @Html.ValidationMessageFor(t => t.Name)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(t => t.Color, new { @class = "col-form-label" })
+                @Html.TextBoxFor(t => t.Color, new { @class = "form-control", @type = "color" })
+                @Html.ValidationMessageFor(t => t.Color)
+            </div>
+        </div>
+    
+    </div>
+
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Save</button>
+            @Html.ActionLink("Cancel", "Index", "Terrain", null, new { @class = "btn btn-danger" })
+        </div>
+        }
+
+        @section Scripts
+{
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+

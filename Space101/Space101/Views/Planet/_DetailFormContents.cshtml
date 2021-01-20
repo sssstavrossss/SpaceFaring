@@ -1,0 +1,45 @@
+﻿@model Space101.ViewModels.PlanetViewModels.PlanetDetailFormViewModel
+
+@Html.HiddenFor(d => d.PlanetDetailFormViewModelId)
+
+<div class="planet-details-form-group">
+
+    <button type="button" class="btn btn-lg btn-block " data-toggle="collapse" data-target="#details">
+        Manage Planet Details
+    </button>
+    <div id="details" class="collapse">
+        <br />
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(d => d.RotationPeriod, new { @class = "col-form-label" })
+                @Html.TextBoxFor(d => d.RotationPeriod, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.RotationPeriod)
+                <p class="help-block">Add an integer larger than 0. Add -1 for no info.</p>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(d => d.OrbitalPeriod, new { @class = "col-form-label" })
+                @Html.TextBoxFor(d => d.OrbitalPeriod, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.OrbitalPeriod)
+                <p class="help-block">Add an integer larger than 0. Add -1 for no info.</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(d => d.Diameter, new { @class = "col-form-label" })
+                @Html.TextBoxFor(d => d.Diameter, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Diameter)
+                <p class="help-block">Add an integer larger than 0. Add -1 for no info.</p>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(d => d.Population, new { @class = "col-form-label" })
+                @Html.TextBoxFor(d => d.Population, new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Population)
+                <p class="help-block">Add an integer larger than 0. Add -1 for no info.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

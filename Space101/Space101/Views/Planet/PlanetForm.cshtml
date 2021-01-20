@@ -1,0 +1,71 @@
+﻿@model Space101.ViewModels.PlanetViewModels.ContainerPlanetFormViewModel
+
+@{
+    ViewBag.Title = "PlanetForm";
+}
+<br />
+@if (Model.Action == "New")
+{
+    <h2>Create New Planet</h2>
+}
+else
+{
+    <h2>Edit Planet With Id: @Model.PlanetFormViewModel.PlanetFormViewModelId</h2>
+}
+<br />
+@using (Html.BeginForm("Save", "Planet", null, FormMethod.Post, new { enctype = "multipart/form-data", @id = "planet-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            @Html.Partial("_PlanetFormContents", Model.PlanetFormViewModel)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            @Html.Partial("_DetailFormContents", Model.PlanetDetailFormViewModel)
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            @Html.Partial("_ClimateZonesFormContents", Model.Climates)
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            @Html.Partial("_SurfaceMorphologyFormContents", Model.Terrains)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            @Html.Partial("_PlanetAssetsFormContents", Model.PlanetAssets)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            @Html.Partial("_PlanetTextsFormContents", Model.PlanetAssets)
+        </div>
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        @Html.ActionLink("Cancel", "Index", "Planet", null, new { @class = "btn btn-danger btn-lg" })
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryvalCustomLocals");
+    @Scripts.Render("~/bundles/planet");
+
+    <script>
+        $(document).ready(function () {
+            LocalCultureController.initLocalCulture();
+            PlanetController.initPlanetForm();
+        });
+    </script>
+}

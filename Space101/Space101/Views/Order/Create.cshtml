@@ -1,0 +1,103 @@
+﻿@model Space101.ViewModels.OrderViewModels.OrderTicketFormContainerViewModel
+
+@{
+    ViewBag.Title = "Order Form";
+}
+
+<h2>Order Form</h2>
+<div id="refresh-interval" hidden data-force-back="@ViewBag.RefreshInterval"></div>
+
+<div>
+    From: @Model.Flight.FlightPath.Departure.Name To: @Model.Flight.FlightPath.Destination.Name <br />
+    Date: @Model.Flight.Date
+</div>
+<hr />
+
+@using (Html.BeginForm("ValidateOrder", "Order"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(o => o.OrderTicketsFormViewModel.OrderId)
+    @Html.HiddenFor(o => o.OrderTicketsFormViewModel.TotalPrice)
+    @Html.HiddenFor(o => o.OrderTicketsFormViewModel.UserId)
+
+    <div class="form-group">
+        @Html.LabelFor(t => t.OrderTicketsFormViewModel.BuyerEmail, new { @class = "col-form-label" })
+        @Html.TextBoxFor(t => t.OrderTicketsFormViewModel.BuyerEmail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(t => t.OrderTicketsFormViewModel.BuyerEmail)
+    </div>
+    <hr />
+
+    @Html.Partial("_TicketFormContents", Model.TicketContainer)
+
+    <div>
+        Total Price: @Model.OrderTicketsFormViewModel.TotalPrice
+        Number Of Tickets: @Model.TicketContainer.TicketFormViewModels.Count
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "ChooseSeats", "Flight", new { id = Model.Flight.FlightId }, new { @class = "btn btn-danger js-cancel-btn" })
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(window).ready(function () {
+            let ReleaseSeats = function () {
+                let flightSeats = $("[id*=SeatId]");
+                let SeatIds = [];
+
+                for (var seat of flightSeats) {
+                    SeatIds.push(seat.value)
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/flights/seats/releaseSeats",
+                    data: { "": SeatIds }
+                }).done();
+
+                return SeatIds.length;
+            }
+            let redirect = function () {
+                let forceBack = $("#refresh-interval").attr("data-force-back");
+
+                if (forceBack > 0) {
+                    alert('You must restart your proccess because there are pending changes...\n We are releasing your seats...');
+                    window.history.back();
+                }
+            }
+            redirect();
+            $(window).on("beforeunload", function (e) {
+                ReleaseSeats();
+
+                console.log("We are releasing your seats...");
+                for (var i = 0; i < 500; i++) {
+                    console.log(". . .");
+                }
+                console.log("Seats released");
+            });
+            $(".js-cancel-btn").on("click", function () {
+                $(window).off('beforeunload');
+                ReleaseSeats();
+                sessionStorage.removeItem("redirect");
+                alert("We are releasing your seats...");
+            });
+            $("form").submit(function (e) {
+                if ($(this).valid()) {
+                    $(window).off('beforeunload');
+                }
+                    
+            });
+        });
+    </script>
+}
+
+
+
+
+

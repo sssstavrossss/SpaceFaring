@@ -1,0 +1,77 @@
+﻿@*@using Microsoft.AspNet.Identity;*@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+@*@User.Identity.GetUserId()*@
+
+<h2 id="flight-header">
+    <span id="flight-no" class="order-number"></span>Available Flights
+</h2>
+
+<div class="row main">
+
+    <div class="col-xs-9 flights-main">
+
+    </div>
+    <div class="col-xs-3 filters">
+        <div>
+            Sort By
+            <select style="margin-top: 5px;" id="sort-select">
+                <option value="PRASC">Price Ascending</option>
+                <option value="PRDESC">Price Descending</option>
+                <option value="PLASC">Planet Ascending</option>
+                <option value="PLDESC">Planet Descending</option>
+                <option value="DASC" selected>Date Ascending</option>
+                <option value="DDESC">Date Descending</option>
+            </select>
+        </div>
+        <br />
+        <div>
+            Destination Planet<input value="" id="destination-input" type="text" placeholder="Type Name" style="margin-bottom: 10px; margin-top: 5px;" />
+            Departure Planet<input value="" id="departure-input" type="text" placeholder="Type Name" style="margin-bottom: 10px; margin-top: 5px;" />
+        </div>
+        <div id="double-range">
+            Daparture Date from
+            <input type="text" id="from" name="from" style="margin-bottom: 10px; margin-top: 5px;" autocomplete="off">
+            Departure Date to
+            <input type="text" id="to" name="to" style="margin-bottom: 10px; margin-top: 5px;" autocomplete="off">
+        </div>
+        <div>
+            <p style="text-align: center;">
+                Price range
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-size: 15px; text-align: center;">
+            </p>
+            <div id="slider-range"></div>
+        </div>
+        <div class="vip-div">
+            VIP<input type="checkbox" id="vip" />
+            NO VIP<input type="checkbox" id="vip-no" />
+        </div>
+        <div>
+            <button id="search-btn">Search</button>
+        </div>
+    </div>
+
+</div>
+
+@Styles.Render("~/Content/custom/UserFlights.css")
+
+@section scripts
+{
+
+    @Scripts.Render("~/bundles/pagination")
+    @Scripts.Render("~/bundles/usersFlights")
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            
+            UsersFlightsController.init();
+
+        });
+
+    </script>
+}

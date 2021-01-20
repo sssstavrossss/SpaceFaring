@@ -1,0 +1,169 @@
+﻿@model Space101.ViewModels.RaceViewModels.UserRaceViewModel
+
+@{
+    var base64 = Convert.ToBase64String(Model.Race.Avatar);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+
+<div class="container-fluid">
+
+    <div class="main-content">
+
+        <div class="row main-details ">
+            <div class="main-buttons">
+                <div>
+                    <a data-title="Race Details" data-href="race-details">
+                        <img src="~/images/parchment.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Race Info" data-href="race-info">
+                        <img src="~/images/info.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Race Planets" data-href="planet-info">
+                        <img src="~/images/internet.png" />
+                    </a>
+                </div>
+            </div>
+            <div class="main-info">
+                <div class="planet-history" id="race-details" style="display: none;">
+                    <h3>@Model.Race.Name History</h3>
+                    <hr />
+                    @if (Model.Details != null)
+                    {
+                        if (Model.Details.Length > 0)
+                        {
+                            @Model.Details
+                        }
+                        else
+                        {
+                            @:<h4 class="uknown">Unkown history</h4>
+                        }
+                    }
+                    else
+                    {
+                        @:<h4 class="uknown">Unkown history</h4>
+                    }
+                </div>
+                <div class="planet-info" id="race-info">
+                    <h3>@Model.Race.Name Information</h3> <hr />
+                    <h4>Basic Information</h4>
+                    <div class="basic-info">
+                        <div>
+                            <h5 @if (Model.Race.AverageHeight <= 0) { @: class="uknown"
+                                }>
+                                Average Height
+                            </h5>
+                            @if (Model.Race.AverageHeight > 0)
+                            {
+                                <span>@Model.Race.AverageHeight</span>
+                            }
+                            else
+                            {
+                                <span>Unkown</span>
+                            }
+                        </div>
+                        <div>
+                            <h5 @if (Model.Race.RaceClassificationID < 0) { @: class="uknown"
+                                }>
+                                Race Classification
+                            </h5>
+                            @if (Model.Race.RaceClassificationID > 0)
+                            {
+                                <span>@Model.Race.RaceClassification.Name</span>
+                            }
+                            else
+                            {
+                                <span>Unkown</span>
+                            }
+                        </div>
+                    </div>
+                    <h4>Planet Habitat Information</h4>
+                    <div class="detail-info">
+                        @if (Model.Race.RaceHabitats.Count > 0)
+                        {
+                            foreach (var planet in Model.Race.RaceHabitats.Select(rh => rh.Planet).ToList())
+                            {
+                                <div>
+                                    <h5 class="known">Habitat</h5>
+                                    <span>@planet.Name</span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <h5 class="uknown">Habitats</h5>
+                                <span>Unknown</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="planet-info race-info" id="planet-info" style="display: none;">
+                    @if (Model.Race.RaceHabitats.Count > 0)
+                    {
+                        foreach (var planet in Model.Race.RaceHabitats.Select(rh => rh.Planet))
+                        {
+                            <div>
+                                <div>
+                                    @planet.Name
+                                </div>
+                                <a href="/UserPlanet/Planet/@planet.PlanetID">
+                                    @if (planet.Avatar.Length > 0)
+                                    {
+                                        <img src="data:image/jpg;base64,@System.Convert.ToBase64String(planet.Avatar)" , planet.Avatar)"
+                                             alt="@planet.Name avatar " />
+
+                                    }
+                                    else
+                                    {
+                                        <img src="/images/null-image.jpg" />
+                                    }
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h4 class="uknown">Planets Unkown</h4>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+        <article class="card card--planet">
+            <div class="planet-availability">
+                <span>@Model.Race.Name</span> <span class="planet-available">@Model.Race.RaceClassification.Name</span>
+</div>
+<div class="card__planet">
+    <div class="planet__atmosphere">
+        <div class="planet__surface"
+             @if (Model.Race.Avatar.Length > 0) { @: style="
+                             @:background-image: url(@imgSrc);
+                             @:background-size: cover;">
+        }
+        else
+        {
+            @:><img src="/images/null-image.jpg" style="height: 100%; width: auto;" />
+        }
+</div>
+</div>
+</div>
+</article>
+
+
+
+</div>
+
+</div>
+
+@Styles.Render("~/Content/custom/userRace.css")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/userRace")
+}

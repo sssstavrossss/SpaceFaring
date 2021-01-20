@@ -1,0 +1,1788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2631AF35-4625-4D80-9B59-CDA96587ACA8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Space101</RootNamespace>
+    <AssemblyName>Space101</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44310</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPdf, Version=2020.12.3.0, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPdf.2020.12.3\lib\net45\IronPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPdf.Assets.Rendering.Windows, Version=21.0.0.0, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPdf.Assets.Rendering.Windows.21.0.0\lib\net40\IronPdf.Assets.Rendering.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.1.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.1.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.1.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppExtensions\IdentityExtensions.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\OrganizationControl.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\api\ApplicationRolesController.cs" />
+    <Compile Include="Controllers\api\ClimatesController.cs" />
+    <Compile Include="Controllers\api\DatabaseStatisticsController.cs" />
+    <Compile Include="Controllers\api\FlightPathsController.cs" />
+    <Compile Include="Controllers\api\FlightsController.cs" />
+    <Compile Include="Controllers\api\LocalCulturesController.cs" />
+    <Compile Include="Controllers\api\OrdersController.cs" />
+    <Compile Include="Controllers\api\PlanetsController.cs" />
+    <Compile Include="Controllers\api\RacesClassificationsController.cs" />
+    <Compile Include="Controllers\api\RacesController.cs" />
+    <Compile Include="Controllers\api\StarshipsController.cs" />
+    <Compile Include="Controllers\api\TerrainsController.cs" />
+    <Compile Include="Controllers\api\TicketsController.cs" />
+    <Compile Include="Controllers\api\UserFavoritesController.cs" />
+    <Compile Include="Controllers\api\UsersController.cs" />
+    <Compile Include="Controllers\api\UsersFlightsController.cs" />
+    <Compile Include="Controllers\ApplicationRoleController.cs" />
+    <Compile Include="Controllers\ClimateController.cs" />
+    <Compile Include="Controllers\DatabaseStatisticController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserFlightsController.cs" />
+    <Compile Include="Controllers\UserPlanetController.cs" />
+    <Compile Include="Controllers\UserRaceController.cs" />
+    <Compile Include="Custom_Validations\ObjectValidator.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\DatabaseNumbersDto.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\FlightsPerDateDto.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\FlightsPerStatusDto.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\FlightStatisticsDto.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\PlanetsPerClimateDto.cs" />
+    <Compile Include="Dtos\BatabaseStatisticsDtos\PlanetsPerTerrainDto.cs" />
+    <Compile Include="Dtos\ClimateDto.cs" />
+    <Compile Include="Dtos\ClimateZoneDto.cs" />
+    <Compile Include="Dtos\FilePathDto.cs" />
+    <Compile Include="Dtos\FlightDto.cs" />
+    <Compile Include="Dtos\FlightPathDto.cs" />
+    <Compile Include="Dtos\FlightSearchDto.cs" />
+    <Compile Include="Dtos\FlightStatusDto.cs" />
+    <Compile Include="Dtos\PlanetDetailDto.cs" />
+    <Compile Include="Dtos\PlanetDto.cs" />
+    <Compile Include="Dtos\PlanetFlightDto.cs" />
+    <Compile Include="Dtos\RaceFileDto.cs" />
+    <Compile Include="Dtos\RaceHabitatPLANETDto.cs" />
+    <Compile Include="Dtos\RaceHabitatRACEDto.cs" />
+    <Compile Include="Dtos\RacePLANETDto.cs" />
+    <Compile Include="Dtos\StarshipDto.cs" />
+    <Compile Include="Dtos\SurfaceMorphologyDto.cs" />
+    <Compile Include="Dtos\TerrainDto.cs" />
+    <Compile Include="Dtos\TicketDto.cs" />
+    <Compile Include="Dtos\UserFavoriteDto.cs" />
+    <Compile Include="Dtos\UserFavoritesManipulateDto.cs" />
+    <Compile Include="Enums\FileType.cs" />
+    <Compile Include="Enums\FlightStatusEnum.cs" />
+    <Compile Include="Enums\InvalidPropertyValues.cs" />
+    <Compile Include="Controllers\FlightController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlanetController.cs" />
+    <Compile Include="Controllers\RaceClassificationController.cs" />
+    <Compile Include="Controllers\FlightPathController.cs" />
+    <Compile Include="Controllers\RaceController.cs" />
+    <Compile Include="Controllers\StarshipController.cs" />
+    <Compile Include="Controllers\TerrainController.cs" />
+    <Compile Include="Custom_Validations\FutureDate.cs" />
+    <Compile Include="Custom_Validations\ValidTime.cs" />
+    <Compile Include="Dtos\AvailableDestinationDto.cs" />
+    <Compile Include="Dtos\RaceClassificationsDto.cs" />
+    <Compile Include="Dtos\RaceDto.cs" />
+    <Compile Include="Enums\ModelType.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper_Models\AvailableRoles.cs" />
+    <Compile Include="Hub Services\FlightHubService.cs" />
+    <Compile Include="Hubs\FlightHub.cs" />
+    <Compile Include="Interfaces\IModelFilePath.cs" />
+    <Compile Include="Migrations\202011181129525_InitialModel.cs" />
+    <Compile Include="Migrations\202011181129525_InitialModel.Designer.cs">
+      <DependentUpon>202011181129525_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011191109248_AddPlanetTable.cs" />
+    <Compile Include="Migrations\202011191109248_AddPlanetTable.Designer.cs">
+      <DependentUpon>202011191109248_AddPlanetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011191428491_AddPlanetDetailTable.cs" />
+    <Compile Include="Migrations\202011191428491_AddPlanetDetailTable.Designer.cs">
+      <DependentUpon>202011191428491_AddPlanetDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201124154_AddClimateTable.cs" />
+    <Compile Include="Migrations\202011201124154_AddClimateTable.Designer.cs">
+      <DependentUpon>202011201124154_AddClimateTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201156317_RaceModel&amp;CO.cs" />
+    <Compile Include="Migrations\202011201156317_RaceModel&amp;CO.Designer.cs">
+      <DependentUpon>202011201156317_RaceModel&amp;CO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201243255_NameChangeForRaceClassification.cs" />
+    <Compile Include="Migrations\202011201243255_NameChangeForRaceClassification.Designer.cs">
+      <DependentUpon>202011201243255_NameChangeForRaceClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201347208_AddTerrainTable.cs" />
+    <Compile Include="Migrations\202011201347208_AddTerrainTable.Designer.cs">
+      <DependentUpon>202011201347208_AddTerrainTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011211157518_AddStarshipTable.cs" />
+    <Compile Include="Migrations\202011211157518_AddStarshipTable.Designer.cs">
+      <DependentUpon>202011211157518_AddStarshipTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011211320428_AddFlightAndRouteTable.cs" />
+    <Compile Include="Migrations\202011211320428_AddFlightAndRouteTable.Designer.cs">
+      <DependentUpon>202011211320428_AddFlightAndRouteTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011211838559_ChangeRouteTableToFlightPath.cs" />
+    <Compile Include="Migrations\202011211838559_ChangeRouteTableToFlightPath.Designer.cs">
+      <DependentUpon>202011211838559_ChangeRouteTableToFlightPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011241125425_UpdatingUser&amp;AddInterTables.cs" />
+    <Compile Include="Migrations\202011241125425_UpdatingUser&amp;AddInterTables.Designer.cs">
+      <DependentUpon>202011241125425_UpdatingUser&amp;AddInterTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011281434387_UpdatingRaceModelAndIntermediateTables.cs" />
+    <Compile Include="Migrations\202011281434387_UpdatingRaceModelAndIntermediateTables.Designer.cs">
+      <DependentUpon>202011281434387_UpdatingRaceModelAndIntermediateTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012011352012_UpdateFlightTable.cs" />
+    <Compile Include="Migrations\202012011352012_UpdateFlightTable.Designer.cs">
+      <DependentUpon>202012011352012_UpdateFlightTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012050109465_ApplicationRole.cs" />
+    <Compile Include="Migrations\202012050109465_ApplicationRole.Designer.cs">
+      <DependentUpon>202012050109465_ApplicationRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012050128428_ApplicationRoleFIX.cs" />
+    <Compile Include="Migrations\202012050128428_ApplicationRoleFIX.Designer.cs">
+      <DependentUpon>202012050128428_ApplicationRoleFIX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012181317200_UpdateAppUser.cs" />
+    <Compile Include="Migrations\202012181317200_UpdateAppUser.Designer.cs">
+      <DependentUpon>202012181317200_UpdateAppUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012231313380_AddAvatarInPlanetTable.cs" />
+    <Compile Include="Migrations\202012231313380_AddAvatarInPlanetTable.Designer.cs">
+      <DependentUpon>202012231313380_AddAvatarInPlanetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012232105079_AddAssetCollectionToPlanet.cs" />
+    <Compile Include="Migrations\202012232105079_AddAssetCollectionToPlanet.Designer.cs">
+      <DependentUpon>202012232105079_AddAssetCollectionToPlanet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012251310270_AddCoordinatesInPlanetTable.cs" />
+    <Compile Include="Migrations\202012251310270_AddCoordinatesInPlanetTable.Designer.cs">
+      <DependentUpon>202012251310270_AddCoordinatesInPlanetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261528330_AddIsActiveInPlanetTable.cs" />
+    <Compile Include="Migrations\202012261528330_AddIsActiveInPlanetTable.Designer.cs">
+      <DependentUpon>202012261528330_AddIsActiveInPlanetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261615264_addFlighStatusTable.cs" />
+    <Compile Include="Migrations\202012261615264_addFlighStatusTable.Designer.cs">
+      <DependentUpon>202012261615264_addFlighStatusTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261624165_PopulateFlightStatus.cs" />
+    <Compile Include="Migrations\202012261624165_PopulateFlightStatus.Designer.cs">
+      <DependentUpon>202012261624165_PopulateFlightStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261629339_AddFlightStatusInFlightTable.cs" />
+    <Compile Include="Migrations\202012261629339_AddFlightStatusInFlightTable.Designer.cs">
+      <DependentUpon>202012261629339_AddFlightStatusInFlightTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261752595_AddStarhipInFlightTable.cs" />
+    <Compile Include="Migrations\202012261752595_AddStarhipInFlightTable.Designer.cs">
+      <DependentUpon>202012261752595_AddStarhipInFlightTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261810290_AddFlightSeatsTable.cs" />
+    <Compile Include="Migrations\202012261810290_AddFlightSeatsTable.Designer.cs">
+      <DependentUpon>202012261810290_AddFlightSeatsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261845576_changeFlightSeatIdToLong.cs" />
+    <Compile Include="Migrations\202012261845576_changeFlightSeatIdToLong.Designer.cs">
+      <DependentUpon>202012261845576_changeFlightSeatIdToLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261854015_AddColorInClimateTable.cs" />
+    <Compile Include="Migrations\202012261854015_AddColorInClimateTable.Designer.cs">
+      <DependentUpon>202012261854015_AddColorInClimateTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012261859521_AddColorInTerrainTable.cs" />
+    <Compile Include="Migrations\202012261859521_AddColorInTerrainTable.Designer.cs">
+      <DependentUpon>202012261859521_AddColorInTerrainTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012291226034_AddTicketTable.cs" />
+    <Compile Include="Migrations\202012291226034_AddTicketTable.Designer.cs">
+      <DependentUpon>202012291226034_AddTicketTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012291227261_PopulateTravelClass.cs" />
+    <Compile Include="Migrations\202012291227261_PopulateTravelClass.Designer.cs">
+      <DependentUpon>202012291227261_PopulateTravelClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012291335062_AddOrderAndTicketTables.cs" />
+    <Compile Include="Migrations\202012291335062_AddOrderAndTicketTables.Designer.cs">
+      <DependentUpon>202012291335062_AddOrderAndTicketTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012291558250_UpdateRaceAvatar.cs" />
+    <Compile Include="Migrations\202012291558250_UpdateRaceAvatar.Designer.cs">
+      <DependentUpon>202012291558250_UpdateRaceAvatar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101011552218_fixFlightSeatForeignKey.cs" />
+    <Compile Include="Migrations\202101011552218_fixFlightSeatForeignKey.Designer.cs">
+      <DependentUpon>202101011552218_fixFlightSeatForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101021821151_RaceFileManager.cs" />
+    <Compile Include="Migrations\202101021821151_RaceFileManager.Designer.cs">
+      <DependentUpon>202101021821151_RaceFileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101031521096_ChangesOnTicketAndOrder.cs" />
+    <Compile Include="Migrations\202101031521096_ChangesOnTicketAndOrder.Designer.cs">
+      <DependentUpon>202101031521096_ChangesOnTicketAndOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101042156336_AddedDateAndPaymentIdInOrder.cs" />
+    <Compile Include="Migrations\202101042156336_AddedDateAndPaymentIdInOrder.Designer.cs">
+      <DependentUpon>202101042156336_AddedDateAndPaymentIdInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101101559041_Favorites.cs" />
+    <Compile Include="Migrations\202101101559041_Favorites.Designer.cs">
+      <DependentUpon>202101101559041_Favorites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101101609082_FavoritesUserIDFix.cs" />
+    <Compile Include="Migrations\202101101609082_FavoritesUserIDFix.Designer.cs">
+      <DependentUpon>202101101609082_FavoritesUserIDFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101121336552_changePaymentCollumnToInvoiceIdInOrderTable.cs" />
+    <Compile Include="Migrations\202101121336552_changePaymentCollumnToInvoiceIdInOrderTable.Designer.cs">
+      <DependentUpon>202101121336552_changePaymentCollumnToInvoiceIdInOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101131418201_RunSqlScript.cs" />
+    <Compile Include="Migrations\202101131418201_RunSqlScript.Designer.cs">
+      <DependentUpon>202101131418201_RunSqlScript.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101131555396_RunSqlScript2.cs" />
+    <Compile Include="Migrations\202101131555396_RunSqlScript2.Designer.cs">
+      <DependentUpon>202101131555396_RunSqlScript2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\FilePath.cs" />
+    <Compile Include="Models\FlightSeat.cs" />
+    <Compile Include="Models\FlightStatus.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\RaceFile.cs" />
+    <Compile Include="Models\TicketOrder.cs" />
+    <Compile Include="Models\PlanetFile.cs" />
+    <Compile Include="Models\RoleNames.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TravelClass.cs" />
+    <Compile Include="Models\UserFavorite.cs" />
+    <Compile Include="PaymentConfiguration\PayPalConfiguration.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserRepository.cs" />
+    <Compile Include="Repositories\FilePathRepository.cs" />
+    <Compile Include="Repositories\FlightRepository.cs" />
+    <Compile Include="Repositories\FlightSeatRepository.cs" />
+    <Compile Include="Repositories\FlightStatusRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\TicketRepository.cs" />
+    <Compile Include="Repositories\UserFavoriteRepository.cs" />
+    <Compile Include="Services\FileManager.cs" />
+    <Compile Include="Services\FileUploadBinder.cs" />
+    <Compile Include="Services\GeneratePDFHtml.cs" />
+    <Compile Include="ViewModels\ApplicationRoleViewModels\ApplicationRoleContainerViewModel.cs" />
+    <Compile Include="ViewModels\ApplicationRoleViewModels\ApplicationRoleForm.cs" />
+    <Compile Include="ViewModels\ApplicationUserViewModels\ApplicationUserContainerViewModel.cs" />
+    <Compile Include="ViewModels\ClimateViewModels\ClimateViewModel.cs" />
+    <Compile Include="ViewModels\ClimateZoneViewModels\ClimateZoneViewModel.cs" />
+    <Compile Include="ViewModels\DataBaseStatisticsViewModels\DatabaseNumbersViewModel.cs" />
+    <Compile Include="ViewModels\FlightPathViewModels\LightFlightPathViewModel.cs" />
+    <Compile Include="ViewModels\FlightViewModels\ContainerFlightFormViewModel.cs" />
+    <Compile Include="ViewModels\FlightViewModels\FlightFormViewModel.cs" />
+    <Compile Include="ViewModels\FlightViewModels\FullFlightViewModel.cs" />
+    <Compile Include="ViewModels\IdentityViewModels\AccountViewModels.cs" />
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Climate.cs" />
+    <Compile Include="Models\ClimateZone.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Repositories\ClimateRepository.cs" />
+    <Compile Include="Repositories\FlightPathRepository.cs" />
+    <Compile Include="Repositories\StarshipRepository.cs" />
+    <Compile Include="Repositories\TerrainRepository.cs" />
+    <Compile Include="ViewModels\FlightPathViewModels\ContainerFlightPathFormViewModel.cs" />
+    <Compile Include="ViewModels\FlightPathViewModels\FlightPathViewModel.cs" />
+    <Compile Include="ViewModels\FlightViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\IdentityViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Planet.cs" />
+    <Compile Include="Models\PlanetDetail.cs" />
+    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\RaceClassification.cs" />
+    <Compile Include="Models\RaceHabitat.cs" />
+    <Compile Include="Models\FlightPath.cs" />
+    <Compile Include="Models\Starship.cs" />
+    <Compile Include="Models\SurfaceMorphology.cs" />
+    <Compile Include="Models\Terrain.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\PlanetRepository.cs" />
+    <Compile Include="Repositories\RaceClassificationRepository.cs" />
+    <Compile Include="Repositories\RaceRepository.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ClimateViewModels\ClimateFormViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModels\OrderTicketFormContainerViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModels\OrderTicketsFormViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModels\PrintOrderViewModel.cs" />
+    <Compile Include="ViewModels\PlanetFileViewModels\DisplayPlanetFileViewModel.cs" />
+    <Compile Include="ViewModels\PlanetFileViewModels\PlanetFileFormViewModel.cs" />
+    <Compile Include="ViewModels\PlanetUserViewModels\PlanetUserViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\ContainerPlanetFormViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\DisplayFullPlanetViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\PlanetDetailFormViewModel.cs" />
+    <Compile Include="ViewModels\FlightPathViewModels\FlightPathFormViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\LightPlanetViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\PlanetAssetsFormViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\PlanetFormViewModel.cs" />
+    <Compile Include="ViewModels\PlanetViewModels\DisplayPlanetViewModel.cs" />
+    <Compile Include="ViewModels\RaceClassificationViewModel\RaceClassificationViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModels\LightRaceViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModels\RaceFormViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModels\RaceViewModel.cs" />
+    <Compile Include="ViewModels\RaceHabitatViewModel\RaceHabitatViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModels\UserRaceViewModel.cs" />
+    <Compile Include="ViewModels\StarshipViewModels\LightStarshipViewModel.cs" />
+    <Compile Include="ViewModels\StarshipViewModels\StarshipFormViewModel.cs" />
+    <Compile Include="ViewModels\StarshipViewModels\StarshipViewModel.cs" />
+    <Compile Include="ViewModels\SurfaceMorphologyViewModels\SurfaceMorphologyViewModel.cs" />
+    <Compile Include="ViewModels\TerrainViewModels\TerrainFormViewModel.cs" />
+    <Compile Include="ViewModels\TerrainViewModels\TerrainViewModel.cs" />
+    <Compile Include="ViewModels\TicketViewModels\DisplayTicketViewModel.cs" />
+    <Compile Include="ViewModels\TicketViewModels\PrintTicketViewModel.cs" />
+    <Compile Include="ViewModels\TicketViewModels\TicketFormContainer.cs" />
+    <Compile Include="ViewModels\TicketViewModels\TicketFormViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModels\DisplayOrderViewModel.cs" />
+    <Compile Include="ViewModels\UserFavoriteViewModels\UserFavoriteViewModel.cs" />
+    <Compile Include="ViewModels\UserOrderViewModels\UserOrderPagingViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="400.html" />
+    <Content Include="404.html" />
+    <Content Include="500.html" />
+    <Content Include="App_Assets\Planet\0\Text\1ec85209-a172-4d1c-bfe8-414c86ddb62a-ToDo.txt" />
+    <Content Include="App_Assets\Planet\0\Text\6ee0b6dd-8b0d-48f3-9812-379ee199d843-ToDo.txt" />
+    <Content Include="App_Assets\Planet\0\Text\73100474-c709-4135-a2a6-818e6f487332-Culture.txt" />
+    <Content Include="App_Assets\Planet\0\Text\9fd5c136-f46d-433b-88c7-f9e88403c2c7-Culture.txt" />
+    <Content Include="App_Assets\Planet\0\Text\bce1e0d3-2b61-4ac4-befc-f285116b42b3-History.txt" />
+    <Content Include="App_Assets\Planet\0\Text\f938e457-87c4-431c-a1c0-24a774fd7d67-History.txt" />
+    <Content Include="App_Assets\Planet\10\Text\e505faa7-3ee5-42ac-9e3e-d1d65f0f4e7d-Culture.txt" />
+    <Content Include="App_Assets\Planet\10\Text\e620e6b5-4637-4745-bccb-acc21835c4f9-ToDo.txt" />
+    <Content Include="App_Assets\Planet\10\Text\f9328cf2-62d5-4792-a371-d40de4abb7a0-History.txt" />
+    <Content Include="App_Assets\Planet\11\Text\5ad8da65-9d11-4305-a8ca-73d2e5847aa9-History.txt" />
+    <Content Include="App_Assets\Planet\11\Text\6ee0b6dd-8b0d-48f3-9812-379ee199d843-ToDo.txt" />
+    <Content Include="App_Assets\Planet\11\Text\73100474-c709-4135-a2a6-818e6f487332-Culture.txt" />
+    <Content Include="App_Assets\Planet\11\Text\b73a61c6-c08b-41e9-a6b8-c52a560977fa-ToDo.txt" />
+    <Content Include="App_Assets\Planet\11\Text\f45aaee0-cdf2-4a30-92a1-8ed4c3e80520-Culture.txt" />
+    <Content Include="App_Assets\Planet\11\Text\f938e457-87c4-431c-a1c0-24a774fd7d67-History.txt" />
+    <Content Include="App_Assets\Planet\12\Text\1e6397ec-f78b-4ee3-8f09-79b57ec1cc89-Culture.txt" />
+    <Content Include="App_Assets\Planet\12\Text\25df6152-2631-44e9-a79b-398c92c9958c-ToDo.txt" />
+    <Content Include="App_Assets\Planet\12\Text\f73b53ee-3cc7-4dab-a30c-e39129668677-History.txt" />
+    <Content Include="App_Assets\Planet\13\Text\047361ab-de2d-4c2a-aed4-039ab1585f75-Culture.txt" />
+    <Content Include="App_Assets\Planet\13\Text\4b1848a6-c81f-4974-9874-40e4536a8d15-ToDo.txt" />
+    <Content Include="App_Assets\Planet\13\Text\d159301f-ef02-442d-9145-80cf67d26dd9-History.txt" />
+    <Content Include="App_Assets\Planet\14\Text\4b37f811-8e4d-4941-9f5e-37df6c5a3846-ToDo.txt" />
+    <Content Include="App_Assets\Planet\14\Text\6026a599-8dc1-4336-951f-11c4b1179ff7-History.txt" />
+    <Content Include="App_Assets\Planet\14\Text\683f846b-07fe-41de-9e9e-4a9ed214956b-Culture.txt" />
+    <Content Include="App_Assets\Planet\15\Text\023fe36c-550f-4508-92ae-a4d336bfab5a-History.txt" />
+    <Content Include="App_Assets\Planet\15\Text\3f51b7e2-7b99-49d7-b461-c5902efc1b4b-ToDo.txt" />
+    <Content Include="App_Assets\Planet\15\Text\48949a3e-bb60-46e5-ae31-6ae550f10e19-Culture.txt" />
+    <Content Include="App_Assets\Planet\16\Image\8a5ab494-4902-4729-ae44-c2f4cef23fcd.5accb562facba820008b4567.jpg" />
+    <Content Include="App_Assets\Planet\16\Image\91810e24-1087-442e-a659-4698c396d2b0.blue-canada-earth-forest-wallpaper-preview.jpg" />
+    <Content Include="App_Assets\Planet\16\Image\c5b57c60-d454-4677-bc63-4e77a5c31b59.earth.jpg" />
+    <Content Include="App_Assets\Planet\16\Text\68669c35-6f4f-4f4b-b0bd-fc4feca4020d-History.txt" />
+    <Content Include="App_Assets\Planet\16\Text\86684012-43b6-4021-851f-c8da633ea44c-Culture.txt" />
+    <Content Include="App_Assets\Planet\16\Text\ded35627-85b6-48db-991d-7e800b8c62bc-ToDo.txt" />
+    <Content Include="App_Assets\Planet\17\Text\18a3296c-e064-418c-b4b8-f7d89a4be78e-ToDo.txt" />
+    <Content Include="App_Assets\Planet\17\Text\343d0dd2-6332-4e23-97da-83a1c02f1e2c-History.txt" />
+    <Content Include="App_Assets\Planet\17\Text\8f0127ca-26bb-4f76-96be-40c03248b4b6-Culture.txt" />
+    <Content Include="App_Assets\Planet\18\Text\1f4d9b4b-2d5c-445c-8eb6-15a88b9558bc-Culture.txt" />
+    <Content Include="App_Assets\Planet\18\Text\3528cea9-2e11-44d6-a7e6-ee7272f75a2b-History.txt" />
+    <Content Include="App_Assets\Planet\18\Text\d9dc25f1-88f7-460c-8748-736605397d44-ToDo.txt" />
+    <Content Include="App_Assets\Planet\19\Text\464523e6-b2ae-494c-9704-b9acd9939182-Culture.txt" />
+    <Content Include="App_Assets\Planet\19\Text\8c879245-7816-4c3b-80a0-fdf453db1fcc-History.txt" />
+    <Content Include="App_Assets\Planet\19\Text\b0a406dc-6c41-415d-b4ca-1a4b0c9e9758-ToDo.txt" />
+    <Content Include="App_Assets\Planet\1\Image\4b4db714-a6a7-4ccb-8593-5c900d2daafe.blue-canada-earth-forest-wallpaper-preview.jpg" />
+    <Content Include="App_Assets\Planet\1\Image\67104f45-a62a-46e3-8052-54df677291f0.earth.jpg" />
+    <Content Include="App_Assets\Planet\1\Image\ebf5e7de-8dcb-4fbd-ae9e-8343548dd3f5.5accb562facba820008b4567.jpg" />
+    <Content Include="App_Assets\Planet\1\Text\1ec85209-a172-4d1c-bfe8-414c86ddb62a-ToDo.txt" />
+    <Content Include="App_Assets\Planet\1\Text\2995c092-2591-4f08-b3e8-608c38196040-History.txt" />
+    <Content Include="App_Assets\Planet\1\Text\8443977a-e266-40e1-bca0-573a65a2bc27-Culture.txt" />
+    <Content Include="App_Assets\Planet\1\Text\9fd5c136-f46d-433b-88c7-f9e88403c2c7-Culture.txt" />
+    <Content Include="App_Assets\Planet\1\Text\bbe0078a-b112-4aa8-b4ce-9654280c21bc-ToDo.txt" />
+    <Content Include="App_Assets\Planet\1\Text\bce1e0d3-2b61-4ac4-befc-f285116b42b3-History.txt" />
+    <Content Include="App_Assets\Planet\20\Text\46ce99c6-1f64-4d77-a018-24c31762d59a-Culture.txt" />
+    <Content Include="App_Assets\Planet\20\Text\6053d3ee-5ea9-44cb-aaf8-14c42917ca17-ToDo.txt" />
+    <Content Include="App_Assets\Planet\20\Text\b3c56982-e7ed-44aa-ba40-b351fb2ea98f-History.txt" />
+    <Content Include="App_Assets\Planet\21\Text\2cbdf381-c354-4b27-a7cb-0a0bc49c0310-Culture.txt" />
+    <Content Include="App_Assets\Planet\21\Text\d427d8b1-99c2-4f99-a3d2-7954dd015c61-ToDo.txt" />
+    <Content Include="App_Assets\Planet\21\Text\fd8f88cb-375d-44e7-8726-639ae74cdbeb-History.txt" />
+    <Content Include="App_Assets\Planet\22\Text\3623818e-3c50-4ffe-b564-6baf79b68ace-History.txt" />
+    <Content Include="App_Assets\Planet\22\Text\477a630c-2303-44de-b2c8-c7a68e5d6942-ToDo.txt" />
+    <Content Include="App_Assets\Planet\22\Text\e6ba9e52-b471-4f16-a1f4-9fc91bd63b05-Culture.txt" />
+    <Content Include="App_Assets\Planet\23\Text\0046104f-af70-4fff-b95a-e4213f06c679-History.txt" />
+    <Content Include="App_Assets\Planet\23\Text\53fceb2a-5714-40c4-893d-c3b7a279d066-Culture.txt" />
+    <Content Include="App_Assets\Planet\23\Text\f4aeffb9-5de0-4c4e-9ec4-368c4f378bd8-ToDo.txt" />
+    <Content Include="App_Assets\Planet\24\Text\2cc0faaa-5780-4147-8094-bd009ae7b35e-Culture.txt" />
+    <Content Include="App_Assets\Planet\24\Text\a4d51e1c-85dd-4bb9-aa2b-25af9766b982-ToDo.txt" />
+    <Content Include="App_Assets\Planet\24\Text\f35465f4-5c86-4d37-9fcb-88d2be30866e-History.txt" />
+    <Content Include="App_Assets\Planet\25\Text\8abd9e6d-45ce-42dd-b1be-52a79bd519a6-ToDo.txt" />
+    <Content Include="App_Assets\Planet\25\Text\b42981c4-30a4-4755-8b48-9ad24909c0f9-Culture.txt" />
+    <Content Include="App_Assets\Planet\25\Text\feea0f07-9a58-4b84-bd4e-54dab6f4b7a1-History.txt" />
+    <Content Include="App_Assets\Planet\26\Text\58df98de-bc5c-43a8-b171-f0c50fbbb36e-History.txt" />
+    <Content Include="App_Assets\Planet\26\Text\5c5a355d-ae26-4d23-8ff8-414d7e9080a8-ToDo.txt" />
+    <Content Include="App_Assets\Planet\26\Text\dea6de7a-2d30-4f8f-90c7-02a25f6b8476-Culture.txt" />
+    <Content Include="App_Assets\Planet\27\Text\5d86acd5-653a-413d-9b9b-b3c6962b4b3c-History.txt" />
+    <Content Include="App_Assets\Planet\27\Text\85c36ccd-9953-474e-9bd8-47b048647ef6-ToDo.txt" />
+    <Content Include="App_Assets\Planet\27\Text\8eb6f79d-f06f-4571-a1c6-b08dea8fb0f6-Culture.txt" />
+    <Content Include="App_Assets\Planet\28\Text\43141c18-4799-4924-ad5e-dd1de15c9dcc-History.txt" />
+    <Content Include="App_Assets\Planet\28\Text\bfd6ec2a-d6f8-4e8f-9f35-7d4edcd681b5-ToDo.txt" />
+    <Content Include="App_Assets\Planet\28\Text\f20eae5d-7d4c-4bf3-8812-4ee2dcc7c102-Culture.txt" />
+    <Content Include="App_Assets\Planet\29\Text\2da461f7-e699-4093-bb71-434c3636ca4b-ToDo.txt" />
+    <Content Include="App_Assets\Planet\29\Text\a69dda82-fc36-4faa-83c2-7be35555772e-Culture.txt" />
+    <Content Include="App_Assets\Planet\29\Text\bd44221e-0f01-481a-9226-7a4960b407a7-History.txt" />
+    <Content Include="App_Assets\Planet\2\Text\782876d0-606b-4a67-9405-32364bee7eee-ToDo.txt" />
+    <Content Include="App_Assets\Planet\2\Text\8c9dba10-9a34-4427-8226-8a52139df367-History.txt" />
+    <Content Include="App_Assets\Planet\2\Text\92b90f18-f6b2-4da9-8c9b-55ca4b0dfb25-Culture.txt" />
+    <Content Include="App_Assets\Planet\30\Text\c20413f2-e33b-4c8b-88f8-486498003f54-ToDo.txt" />
+    <Content Include="App_Assets\Planet\30\Text\d8bd4027-ba72-403f-b80e-135439b54833-Culture.txt" />
+    <Content Include="App_Assets\Planet\30\Text\fa111ecb-45c5-401a-b693-e0bd150cc4fc-History.txt" />
+    <Content Include="App_Assets\Planet\31\Text\4e13aeba-1d56-4321-9eb7-1a955c45d472-History.txt" />
+    <Content Include="App_Assets\Planet\31\Text\7ca83d18-f13e-4776-9ef7-e69167c661e9-Culture.txt" />
+    <Content Include="App_Assets\Planet\31\Text\bcb397dc-d018-4466-85d3-0d555dc2fdbc-ToDo.txt" />
+    <Content Include="App_Assets\Planet\32\Text\05ce612c-5d41-448b-b784-a05f83a65b03-Culture.txt" />
+    <Content Include="App_Assets\Planet\32\Text\328de810-e8ef-4948-b584-99e242f1f2f3-ToDo.txt" />
+    <Content Include="App_Assets\Planet\32\Text\d51d2514-ae87-4d3d-b541-888859c6cc6d-History.txt" />
+    <Content Include="App_Assets\Planet\33\Text\2aad2687-b79c-44da-a2de-3cebe8fc9169-Culture.txt" />
+    <Content Include="App_Assets\Planet\33\Text\43fc51f8-d4d4-47cd-8520-7254816d0b2c-ToDo.txt" />
+    <Content Include="App_Assets\Planet\33\Text\f9461f9d-5d0a-4b81-81fe-ef5979218305-History.txt" />
+    <Content Include="App_Assets\Planet\34\Text\8779bdb1-31ce-46cc-a7ff-c322c201a30b-Culture.txt" />
+    <Content Include="App_Assets\Planet\34\Text\c1e48f1b-77f5-4ca9-aaab-d5451a502014-History.txt" />
+    <Content Include="App_Assets\Planet\34\Text\f8e060eb-1bb4-4baf-8cde-ed008f0e47e2-ToDo.txt" />
+    <Content Include="App_Assets\Planet\35\Text\09a44f44-67c9-4bbf-bd2a-37d0624ec0fc-ToDo.txt" />
+    <Content Include="App_Assets\Planet\35\Text\0bcfe294-a20e-4df0-9638-43c37c62c444-History.txt" />
+    <Content Include="App_Assets\Planet\35\Text\fd14cda6-38df-45c2-91ce-d78d7792e3d5-Culture.txt" />
+    <Content Include="App_Assets\Planet\36\Text\130a1595-e3ac-4d4e-9562-0c54f5e28b22-History.txt" />
+    <Content Include="App_Assets\Planet\36\Text\494421ec-e3c1-479e-b366-c787a85602b3-ToDo.txt" />
+    <Content Include="App_Assets\Planet\36\Text\73ee64b1-9f79-44ab-9a54-328ea3f5068c-Culture.txt" />
+    <Content Include="App_Assets\Planet\3\Text\14cfb7e8-4a3e-496a-a850-fe0f01c6ab82-History.txt" />
+    <Content Include="App_Assets\Planet\3\Text\592551ae-f2ff-4cb7-a5f4-fbc3d857334e-ToDo.txt" />
+    <Content Include="App_Assets\Planet\3\Text\7acdbefd-b14d-411e-acdb-2f0d50758c39-Culture.txt" />
+    <Content Include="App_Assets\Planet\4\Text\17e7a14d-5ace-498d-b4aa-060e31af89b4-History.txt" />
+    <Content Include="App_Assets\Planet\4\Text\5b6a2770-d5d1-4b04-9ac7-b5d3ab895439-Culture.txt" />
+    <Content Include="App_Assets\Planet\4\Text\bc17f4df-18c7-46eb-9762-c04075fe76d1-ToDo.txt" />
+    <Content Include="App_Assets\Planet\5\Text\39e183f9-6f1a-4f84-9fce-dfb3d490fc45-Culture.txt" />
+    <Content Include="App_Assets\Planet\5\Text\b8b03a05-2822-432a-941d-f6f07131a984-History.txt" />
+    <Content Include="App_Assets\Planet\5\Text\d824f7f0-8567-4eef-b5aa-35bdecb45368-ToDo.txt" />
+    <Content Include="App_Assets\Planet\6\Text\158bf6db-3405-4262-a153-ebba23459d3e-History.txt" />
+    <Content Include="App_Assets\Planet\6\Text\4f4eec62-47b2-43d9-9afd-2e5d0e4461c4-Culture.txt" />
+    <Content Include="App_Assets\Planet\6\Text\6f14fa79-80a2-4db8-be2b-72223b80a692-ToDo.txt" />
+    <Content Include="App_Assets\Planet\7\Text\2ae5cfa4-7b04-4a3b-9b31-f084e1988259-Culture.txt" />
+    <Content Include="App_Assets\Planet\7\Text\7fe1a029-7a37-47d2-b9f7-90fe978c7900-ToDo.txt" />
+    <Content Include="App_Assets\Planet\7\Text\b9c8b2a6-dedf-4987-89f7-c23dcc19a44a-History.txt" />
+    <Content Include="App_Assets\Planet\8\Text\3c6b7991-59f2-48b9-afa3-923b72b9be59-History.txt" />
+    <Content Include="App_Assets\Planet\8\Text\b58f4571-b9a4-4ae9-8cfa-c9cbe8f8af54-ToDo.txt" />
+    <Content Include="App_Assets\Planet\8\Text\dfff2c53-8797-4667-a97d-98eb01696a98-Culture.txt" />
+    <Content Include="App_Assets\Planet\9\Text\1bcf8658-a4de-46fe-b4fe-29145d7f2df9-Culture.txt" />
+    <Content Include="App_Assets\Planet\9\Text\5652844f-80e8-4ebf-8b17-b85ed867b8b4-ToDo.txt" />
+    <Content Include="App_Assets\Planet\9\Text\77ea750c-e1ea-483f-9ede-0f8a4aac7acc-History.txt" />
+    <Content Include="App_Assets\Race\0\Text\af00d56e-233d-4adc-bbbf-0d4c785d2246-Details.txt" />
+    <Content Include="App_Assets\Race\11\Text\17d60c97-f22c-45d9-903d-3e6e5151290b-Details.txt" />
+    <Content Include="App_Assets\Race\12\Text\cf63a06d-935c-47c4-b3f2-d2e025af9960-Details.txt" />
+    <Content Include="App_Assets\Race\13\Text\2b107020-eb45-49aa-a843-6dbcd1bbe45b-Details.txt" />
+    <Content Include="App_Assets\Race\1\Text\af00d56e-233d-4adc-bbbf-0d4c785d2246-Details.txt" />
+    <Content Include="App_Assets\Race\1\Text\dc44edd5-ccce-4446-be58-d659b71727ff-Details.txt" />
+    <Content Include="App_Assets\Race\2\Text\710c6d48-c0e4-48cb-81cf-3b51ebe5e24b-Details.txt" />
+    <Content Include="App_Assets\Race\3\Text\87aa94ea-67d3-44a4-8f10-5b478a822bdc-Details.txt" />
+    <Content Include="App_Assets\Race\4\Text\61fa5c95-2bad-4082-aa12-34ede539ce42-Details.txt" />
+    <Content Include="App_Assets\Race\5\Text\fb236056-1ae1-43e8-80bf-2ae8ab0f636b-Details.txt" />
+    <Content Include="App_Assets\Race\6\Text\5d9a8bb1-11b4-4997-bda1-1072e3e671da-Details.txt" />
+    <Content Include="App_Assets\Race\7\Text\f0ab8f0c-83c0-48ce-8f3f-fbc9c3d3f219-Details.txt" />
+    <Content Include="App_Assets\Race\8\Text\b6007631-84f0-4f60-8719-571be01686e2-Details.txt" />
+    <Content Include="App_Assets\Race\9\Text\fe35585d-b26e-437d-8096-9199554fd528-Details.txt" />
+    <Content Include="Content\AdminSite.css" />
+    <Content Include="Content\bootstrapPDF.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom\applicationUser.css" />
+    <Content Include="Content\custom\applicationRole.css" />
+    <Content Include="Content\custom\errors\badRequest.css" />
+    <Content Include="Content\custom\errors\notFound.css" />
+    <Content Include="Content\custom\intropage.css" />
+    <Content Include="Content\custom\manageIndex.css" />
+    <Content Include="Content\custom\navbar.css" />
+    <Content Include="Content\custom\AdminPlanetDetails.css" />
+    <Content Include="Content\custom\planetsUser.css" />
+    <Content Include="Content\custom\planetUser.css" />
+    <Content Include="Content\custom\printOrderData.css" />
+    <Content Include="Content\custom\raceClassification.css" />
+    <Content Include="Content\custom\racesUser.css" />
+    <Content Include="Content\custom\userFavorites.css" />
+    <Content Include="Content\custom\userFlights.css" />
+    <Content Include="Content\custom\userForms.css" />
+    <Content Include="Content\custom\userIntroPage.css" />
+    <Content Include="Content\custom\userOrders.css" />
+    <Content Include="Content\custom\userRace.css" />
+    <Content Include="Content\custom\userSeat.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\particlejs\particlejs.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\2k_stars.jpg" />
+    <Content Include="images\attach.png" />
+    <Content Include="images\blackhole-1.3s-199px.svg" />
+    <Content Include="images\dollar.png" />
+    <Content Include="images\email.png" />
+    <Content Include="images\explossion.svg" />
+    <Content Include="images\face-recognition.png" />
+    <Content Include="images\firstname.png" />
+    <Content Include="images\floatingAustronaut.svg" />
+    <Content Include="images\Google.png" />
+    <Content Include="images\info.png" />
+    <Content Include="images\internet.png" />
+    <Content Include="images\lastname.png" />
+    <Content Include="images\like-red.png" />
+    <Content Include="images\like-white.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loading4.gif" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\menu.png" />
+    <Content Include="images\milky-way-full-stars-space-min.jpg" />
+    <Content Include="images\neptune.jpg" />
+    <Content Include="images\null-image.jpg" />
+    <Content Include="images\parchment.png" />
+    <Content Include="images\payment-method.png" />
+    <Content Include="images\pexels-alex-andrews-821644-min.jpg" />
+    <Content Include="images\search.png" />
+    <Content Include="images\space-galaxy-background-min.jpg" />
+    <Content Include="images\space-gray.png" />
+    <Content Include="images\space-white.png" />
+    <Content Include="images\space.png" />
+    <Content Include="images\space-green.png" />
+    <Content Include="images\SpaceFaringLogoWeb.png" />
+    <Content Include="images\spaceship.png" />
+    <Content Include="images\stars_milky_way.jpg" />
+    <Content Include="images\ticket.png" />
+    <Content Include="images\tickets.png" />
+    <Content Include="images\timetable.png" />
+    <Content Include="images\user.png" />
+    <EmbeddedResource Include="Migrations\202101131418201_RunSqlScript.sql" />
+    <EmbeddedResource Include="Migrations\202101131555396_RunSqlScript2.sql" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\controllers\applicationRoleController.js" />
+    <Content Include="Scripts\app\controllers\applicationUserController.js" />
+    <Content Include="Scripts\app\controllers\climateController.js" />
+    <Content Include="Scripts\app\controllers\databaseStatisticsController.js" />
+    <Content Include="Scripts\app\controllers\flightController.js" />
+    <Content Include="Scripts\app\controllers\flightPathController.js" />
+    <Content Include="Scripts\app\controllers\localCultureController.js" />
+    <Content Include="Scripts\app\controllers\orderController.js" />
+    <Content Include="Scripts\app\controllers\planetController.js" />
+    <Content Include="Scripts\app\controllers\planetsUsersController.js" />
+    <Content Include="Scripts\app\controllers\raceClassificationsController.js" />
+    <Content Include="Scripts\app\controllers\raceController.js" />
+    <Content Include="Scripts\app\controllers\racesUsersController.js" />
+    <Content Include="Scripts\app\controllers\starshipController.js" />
+    <Content Include="Scripts\app\controllers\terrainController.js" />
+    <Content Include="Scripts\app\controllers\userFavoriteController.js" />
+    <Content Include="Scripts\app\controllers\userFrontPageController.js" />
+    <Content Include="Scripts\app\controllers\ticketController.js" />
+    <Content Include="Scripts\app\services\databaseStatisticsService.js" />
+    <Content Include="Scripts\app\services\orderService.js" />
+    <Content Include="Scripts\app\services\userFavoriteService.js" />
+    <Content Include="Scripts\app\services\userFrontPageService.js" />
+    <Content Include="Scripts\app\services\ticketService.js" />
+    <Content Include="Scripts\app\singalR\userFlightsSignalR.js" />
+    <Content Include="Scripts\app\controllers\usersFlightsController.js" />
+    <Content Include="Scripts\app\customValidations\customDateTimePick.js" />
+    <Content Include="Scripts\app\customValidations\globalizeDateTime.js" />
+    <Content Include="Scripts\app\customValidations\globalizeNumber.js" />
+    <Content Include="Scripts\app\navbar.js" />
+    <Content Include="Scripts\app\printOrderData.js" />
+    <Content Include="Scripts\app\services\applicationRoleService.js" />
+    <Content Include="Scripts\app\services\applicationUserService.js" />
+    <Content Include="Scripts\app\services\climateService.js" />
+    <Content Include="Scripts\app\services\flightPathService.js" />
+    <Content Include="Scripts\app\services\flightService.js" />
+    <Content Include="Scripts\app\services\localCultureService.js" />
+    <Content Include="Scripts\app\services\planetService.js" />
+    <Content Include="Scripts\app\services\planetsUsersService.js" />
+    <Content Include="Scripts\app\services\raceClassificationsService.js" />
+    <Content Include="Scripts\app\services\raceService.js" />
+    <Content Include="Scripts\app\services\racesUsersService.js" />
+    <Content Include="Scripts\app\services\starshipService.js" />
+    <Content Include="Scripts\app\services\terrainService.js" />
+    <Content Include="Scripts\app\services\usersFlightsService.js" />
+    <Content Include="Scripts\app\UserPlanet.js" />
+    <Content Include="Scripts\app\UserRace.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <EmbeddedResource Include="Migrations\202101131555396_RunSqlScript2.resx">
+      <DependentUpon>202101131555396_RunSqlScript2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.af.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.am-ET.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.am.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-AE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-BH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-DZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-EG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-IQ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-JO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-KW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-LB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-LY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-MA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-OM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-QA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-SA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-SY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-TN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar-YE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ar.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.arn-CL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.arn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.as-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.as.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Cyrl-AZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Latn-AZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.az.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ba-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ba.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.be-BY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.be.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bg-BG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bg.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn-BD.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bo-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.br-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.br.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Cyrl-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Latn-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.bs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ca-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ca.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.co-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.co.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cs-CZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cy-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.cy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.da-DK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.da.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-AT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-LI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.de.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dsb-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dsb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dv-MV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.dv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.el-GR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.el.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-029.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-AU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-BZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-IE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-JM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-MY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-NZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-PH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-SG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-TT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-US.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.en-ZW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-AR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-BO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-CR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-DO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-EC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-GT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-HN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-MX.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-NI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-PY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-SV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-US.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-UY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es-VE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.es.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.et-EE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.et.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.eu-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.eu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fa-IR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fi-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fil-PH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fil.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fo-FO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-BE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr-MC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fy-NL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.fy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ga-IE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ga.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gd-GB.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gd.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gl-ES.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gsw-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gsw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gu-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.gu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha-Latn-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ha.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.he-IL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.he.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hi-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr-HR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hsb-DE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hsb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hu-HU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hy-AM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.hy.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.id-ID.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.id.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ig-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ig.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ii-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ii.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.is-IS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.is.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it-IT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.it.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Cans-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Cans.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Latn-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.iu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ja-JP.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ja.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ka-GE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ka.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kk-KZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kl-GL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.km-KH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.km.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kn-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ko-KR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ko.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kok-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.kok.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ky-KG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ky.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lb-LU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lo-LA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lt-LT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lv-LV.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.lv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mi-NZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mk-MK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ml-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ml.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-MN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Mong-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn-Mong.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.moh-CA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.moh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mr-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms-BN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms-MY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ms.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mt-MT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.mt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nb-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nb.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ne-NP.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ne.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl-BE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl-NL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nn-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.no.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nso-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.nso.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.oc-FR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.oc.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.or-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.or.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pa-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pl-PL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.prs-AF.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.prs.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ps-AF.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ps.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt-BR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt-PT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.pt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.qut-GT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.qut.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-BO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-EC.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz-PE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.quz.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rm-CH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rm.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ro-RO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ro.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ru-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ru.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rw-RW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.rw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sa-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sa.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sah-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sah.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.se.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.si-LK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.si.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sk-SK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sl-SI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sma.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj-NO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smj.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smn-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.smn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sms-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sms.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sq-AL.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sq.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-CS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-ME.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl-RS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-BA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-CS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-ME.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn-RS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv-FI.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv-SE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sv.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sw-KE.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.sw.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.syr-SY.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.syr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ta-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ta.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.te-IN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.te.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg-Cyrl-TJ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tg.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.th-TH.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.th.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tk-TM.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tn-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tr-TR.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tr.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tt-RU.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tt.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm-Latn-DZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.tzm.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ug-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ug.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uk-UA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uk.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ur-PK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.ur.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Cyrl-UZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Cyrl.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Latn-UZ.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz-Latn.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.uz.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.vi-VN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.vi.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.wo-SN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.wo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.xh-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.xh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.yo-NG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.yo.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CHS.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CHT.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-CN.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-Hans.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-Hant.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-HK.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-MO.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-SG.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh-TW.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zh.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zu-ZA.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.culture.zu.js" />
+    <Content Include="Scripts\jquery.globalize\cultures\globalize.cultures.js" />
+    <Content Include="Scripts\jquery.globalize\globalize.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.globalize.js" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\pagination\pagination.js" />
+    <Content Include="Scripts\particlejs\jsdelivr.js" />
+    <Content Include="Scripts\particlejs\particlejs.js" />
+    <Content Include="Scripts\particlejs\threejs.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\vanda\rings.js" />
+    <Content Include="Scripts\vanda\three.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Intro.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Planet\PlanetForm.cshtml" />
+    <Content Include="Views\Planet\_PlanetFormContents.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Planet\_DetailFormContents.cshtml" />
+    <Content Include="Views\Planet\Index.cshtml" />
+    <Content Include="Scripts\jquery.validate.globalize.min.js.map" />
+    <Content Include="Views\Climate\ClimateForm.cshtml" />
+    <Content Include="Views\Climate\Index.cshtml" />
+    <Content Include="Views\RaceClassification\Index.cshtml" />
+    <Content Include="Views\Terrain\TerrainForm.cshtml" />
+    <Content Include="Views\Terrain\Index.cshtml" />
+    <Content Include="Views\Starship\StarshipForm.cshtml" />
+    <Content Include="Views\Starship\Index.cshtml" />
+    <Content Include="Views\FlightPath\FlightPathForm.cshtml" />
+    <Content Include="Views\Race\Index.cshtml" />
+    <Content Include="Views\Race\Manipulate.cshtml" />
+    <Content Include="Views\FlightPath\Index.cshtml" />
+    <Content Include="Views\FlightPath\_NewFlightPathForm.cshtml" />
+    <Content Include="Views\FlightPath\_EditFlightPathForm.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ApplicationRole\Index.cshtml" />
+    <Content Include="Views\ApplicationRole\_ApplicationRoleForm.cshtml" />
+    <Content Include="Views\ApplicationRole\_ApplicationRoleInfo.cshtml" />
+    <Content Include="Views\Flight\FlightForm.cshtml" />
+    <Content Include="Views\Flight\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Planet\_ClimateZonesFormContents.cshtml" />
+    <Content Include="Views\Planet\_SurfaceMorphologyFormContents.cshtml" />
+    <Content Include="Views\Planet\_PlanetAssetsFormContents.cshtml" />
+    <Content Include="Views\Flight\ChooseSeats.cshtml" />
+    <Content Include="Views\UserPlanet\Planets.cshtml" />
+    <Content Include="Views\Planet\Planet.cshtml" />
+    <Content Include="Views\UserRace\Races.cshtml" />
+    <Content Include="Views\UserPlanet\Planet.cshtml" />
+    <Content Include="Views\UserRace\Race.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\_TicketFormContents.cshtml" />
+    <Content Include="Views\UserFlights\Flights.cshtml" />
+    <Content Include="Views\Order\PrintOrderData.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminNavBar.cshtml" />
+    <Content Include="Views\Shared\_AdminLoginPartial.cshtml" />
+    <Content Include="Views\Planet\_PlanetTextsFormContents.cshtml" />
+    <Content Include="Views\User\UserFavorites.cshtml" />
+    <Content Include="Views\User\UserOrders.cshtml" />
+    <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Flight\ManageSeats.cshtml" />
+    <Content Include="Views\DatabaseStatistic\Index.cshtml" />
+    <Content Include="Views\Planet\Details.cshtml" />
+    <Content Include="Views\Planet\_AdminPlanetDetailsLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011181129525_InitialModel.resx">
+      <DependentUpon>202011181129525_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011191109248_AddPlanetTable.resx">
+      <DependentUpon>202011191109248_AddPlanetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011191428491_AddPlanetDetailTable.resx">
+      <DependentUpon>202011191428491_AddPlanetDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201124154_AddClimateTable.resx">
+      <DependentUpon>202011201124154_AddClimateTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201156317_RaceModel&amp;CO.resx">
+      <DependentUpon>202011201156317_RaceModel&amp;CO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201243255_NameChangeForRaceClassification.resx">
+      <DependentUpon>202011201243255_NameChangeForRaceClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201347208_AddTerrainTable.resx">
+      <DependentUpon>202011201347208_AddTerrainTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211157518_AddStarshipTable.resx">
+      <DependentUpon>202011211157518_AddStarshipTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211320428_AddFlightAndRouteTable.resx">
+      <DependentUpon>202011211320428_AddFlightAndRouteTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211838559_ChangeRouteTableToFlightPath.resx">
+      <DependentUpon>202011211838559_ChangeRouteTableToFlightPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011241125425_UpdatingUser&amp;AddInterTables.resx">
+      <DependentUpon>202011241125425_UpdatingUser&amp;AddInterTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011281434387_UpdatingRaceModelAndIntermediateTables.resx">
+      <DependentUpon>202011281434387_UpdatingRaceModelAndIntermediateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012011352012_UpdateFlightTable.resx">
+      <DependentUpon>202012011352012_UpdateFlightTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012050109465_ApplicationRole.resx">
+      <DependentUpon>202012050109465_ApplicationRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012050128428_ApplicationRoleFIX.resx">
+      <DependentUpon>202012050128428_ApplicationRoleFIX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012181317200_UpdateAppUser.resx">
+      <DependentUpon>202012181317200_UpdateAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012231313380_AddAvatarInPlanetTable.resx">
+      <DependentUpon>202012231313380_AddAvatarInPlanetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012232105079_AddAssetCollectionToPlanet.resx">
+      <DependentUpon>202012232105079_AddAssetCollectionToPlanet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012251310270_AddCoordinatesInPlanetTable.resx">
+      <DependentUpon>202012251310270_AddCoordinatesInPlanetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261528330_AddIsActiveInPlanetTable.resx">
+      <DependentUpon>202012261528330_AddIsActiveInPlanetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261615264_addFlighStatusTable.resx">
+      <DependentUpon>202012261615264_addFlighStatusTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261624165_PopulateFlightStatus.resx">
+      <DependentUpon>202012261624165_PopulateFlightStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261629339_AddFlightStatusInFlightTable.resx">
+      <DependentUpon>202012261629339_AddFlightStatusInFlightTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261752595_AddStarhipInFlightTable.resx">
+      <DependentUpon>202012261752595_AddStarhipInFlightTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261810290_AddFlightSeatsTable.resx">
+      <DependentUpon>202012261810290_AddFlightSeatsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261845576_changeFlightSeatIdToLong.resx">
+      <DependentUpon>202012261845576_changeFlightSeatIdToLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261854015_AddColorInClimateTable.resx">
+      <DependentUpon>202012261854015_AddColorInClimateTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012261859521_AddColorInTerrainTable.resx">
+      <DependentUpon>202012261859521_AddColorInTerrainTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012291226034_AddTicketTable.resx">
+      <DependentUpon>202012291226034_AddTicketTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012291227261_PopulateTravelClass.resx">
+      <DependentUpon>202012291227261_PopulateTravelClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012291335062_AddOrderAndTicketTables.resx">
+      <DependentUpon>202012291335062_AddOrderAndTicketTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012291558250_UpdateRaceAvatar.resx">
+      <DependentUpon>202012291558250_UpdateRaceAvatar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101011552218_fixFlightSeatForeignKey.resx">
+      <DependentUpon>202101011552218_fixFlightSeatForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101021821151_RaceFileManager.resx">
+      <DependentUpon>202101021821151_RaceFileManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101031521096_ChangesOnTicketAndOrder.resx">
+      <DependentUpon>202101031521096_ChangesOnTicketAndOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101042156336_AddedDateAndPaymentIdInOrder.resx">
+      <DependentUpon>202101042156336_AddedDateAndPaymentIdInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101101559041_Favorites.resx">
+      <DependentUpon>202101101559041_Favorites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101101609082_FavoritesUserIDFix.resx">
+      <DependentUpon>202101101609082_FavoritesUserIDFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101121336552_changePaymentCollumnToInvoiceIdInOrderTable.resx">
+      <DependentUpon>202101121336552_changePaymentCollumnToInvoiceIdInOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101131418201_RunSqlScript.resx">
+      <DependentUpon>202101131418201_RunSqlScript.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59784</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44310/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

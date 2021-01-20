@@ -1,0 +1,142 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.TicketViewModels.DisplayTicketViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Tickets</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no tickets yet</p>
+}
+else
+{
+    <table class="table table-responsive table-striped text-center table-bordered" id="tickets">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Path)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlightId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SeatId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TravelClass)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassengerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PassengerLastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Race)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Planet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th>
+                        Actions
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.TicketId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Path)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.FlightId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.SeatId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.TravelClass)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.PassengerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.PassengerLastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Race)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Planet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => ticket.Price)
+                    </td>
+                    @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td>
+                            <button class="btn btn-danger js-delete" data-ticket-id="@ticket.TicketId">Delete</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts
+   {
+        @Scripts.Render("~/bundles/ticket")
+
+        <script>
+            $(document).ready(function () {
+                TicketController.initializeDatabaseManagerDataTable("#tickets");
+                TicketController.initializeDeleteTicket("#tickets", CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+        </script>
+    }
+}
+else
+{
+    @Scripts.Render("~/bundles/ticket")
+
+    @section scripts{
+        <script>
+            $(document).ready(function() {
+            TicketController.initializeDataTable("#tickets");
+        });
+        </script>
+    }
+}
+

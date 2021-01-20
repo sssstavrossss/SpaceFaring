@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <style>
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+
+        .error-container {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            height: 100%;
+            min-height: 100vh;
+            width: 100%;
+            min-width: 100vw;
+            display: flex;
+            justify-content: center;
+            background-color: #000000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg %3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2311081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%23161031' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%231a1447' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%231c185e' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%231c1b77' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            /* background-attachment:fixed;*/
+            background-size: cover;
+            background-position: center;
+        }
+
+        @keyframes float-in-space {
+            25% {
+                transform: translate(17px,15px);
+            }
+
+            50% {
+                transform: translate(35px,10px)
+            }
+
+            25% {
+                transform: translate(25px,-2px);
+            }
+
+            100% {
+                transform: translate(0px,0px);
+            }
+        }
+
+        .astronaut,
+        .explossion {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+        }
+
+        .astronaut {
+            width: 40%;
+            animation: float-in-space 4s linear infinite;
+            z-index: 1
+        }
+
+        .explossion {
+            width: 45%;
+            z-index: 0
+        }
+
+        .error {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            color: #fff;
+        }
+
+            .error .error-status {
+                position: relative;
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+            }
+
+                .error .error-status .status {
+                    font-size: 120px;
+                    margin: 20px;
+                }
+
+            .error .error-message {
+                position: relative;
+                margin-top: 50px;
+            }
+
+        #home-btn {
+            position: relative;
+            bottom: -50px;
+            left: 32%;
+            margin-top: 100px;
+            padding: 15px 50px;
+            font-size: 30px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            background-color: black;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="error-container">
+            <img id="error-image-1" class="astronaut" src="" />
+            <img id="error-image-2" class="explossion" src="" />
+
+            <div class="error">
+                <div class="error-status">
+                    <p class="status">500</p>
+                    <p>Sorry, something broke in the Server.</p>
+                </div>
+
+                <div class="error-message">
+                    <h1>You shouldn 't be here. Please go home . . .</h1>
+                </div>
+
+                <a href="" id="home-btn">Home</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        (function initialize() {
+
+            let imgPath1 = "Images/floatingAustronaut.svg";
+            let imgPath2 = "Images/explossion.svg";
+            let homePath = "Home/Index";
+
+            let fullPath = window.location.href;
+            let protocol = window.location.protocol + '//';
+            let temp = fullPath.substr(fullPath.indexOf(protocol) + protocol.length);
+            let hostPath = protocol + temp.substr(0, temp.indexOf('/')) + '/';
+
+            document.getElementById("error-image-1").setAttribute("src", hostPath + imgPath1);
+            document.getElementById("error-image-2").setAttribute("src", hostPath + imgPath2);
+            document.getElementById("home-btn").setAttribute("href", hostPath + homePath);
+
+        })();
+
+    </script>
+
+</body>
+</html>

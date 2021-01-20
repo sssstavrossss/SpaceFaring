@@ -1,0 +1,390 @@
+﻿@model Space101.ViewModels.PlanetUserViewModels.PlanetUserViewModel
+
+@{
+    var base64 = Convert.ToBase64String(Model.Planet.Avatar);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    var random = new Random();
+    var rotation = random.Next(20, 101);
+    int imageNumber = 1;
+    int imageNumber2 = 1;
+}
+
+<div class="container-fluid">
+
+    <div class="main-content">
+
+        <div class="row main-details ">
+            <div class="main-buttons">
+                <div>
+                    <a data-title="Planet Flight Paths" data-href="planet-flights" role="button">
+                        <img src="~/images/spaceship.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Planet History" data-href="planet-history">
+                        <img src="~/images/parchment.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Planet Info" data-href="planet-info">
+                        <img src="~/images/info.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Planet Races" data-href="race-info">
+                        <img src="~/images/face-recognition.png" />
+                    </a>
+                </div>
+                <div>
+                    <a data-title="Planet Gallery" data-href="photo-gallery">
+                        <img src="~/images/attach.png" />
+                    </a>
+                </div>
+            </div>
+            <div class="main-info">
+                <div class="planet-history" id="planet-history" style="display: none;">
+                    @if (Model.History != null)
+                    {
+                        if (Model.History.Length > 0)
+                        {
+                            <h3>Planet History</h3>
+                            @Model.History
+                        }
+                        else
+                        {
+                            @:<h4 class="uknown">Unkown history</h4>
+                        }
+                    }
+                    else
+                    {
+                        @:<h4 class="uknown">Unkown history</h4>
+                    }
+                    <hr />
+                    @if (Model.Culture != null)
+                    {
+                        if (Model.Culture.Length > 0)
+                        {
+                            <h3>Planet Culture</h3>
+                            @Model.Culture
+                        }
+                        else
+                        {
+                            @:<h4 class="uknown">Unkown history</h4>
+                        }
+                    }
+                    else
+                    {
+                        @:<h4 class="uknown">Unkown history</h4>
+                    }
+                </div>
+                <div class="planet-info" id="planet-info">
+                    <h3>@Model.Planet.Name Information</h3> <hr />
+                    <h4>Basic Information</h4>
+                    <div class="basic-info">
+                        <div>
+                            <h5 @if (Model.Planet.Gravity <= 0) { @: class="uknown"
+                                }>
+                                Gravity
+                            </h5>
+                            @if (Model.Planet.Gravity > 0)
+                            {
+                                <span>@Model.Planet.Gravity</span>
+                            }
+                            else
+                            {
+                                <span>Unkown</span>
+                            }
+                        </div>
+                        <div>
+                            <h5 @if (Model.Planet.SurfaceWater < 0) { @: class="uknown"
+                                }>
+                                Surface Water
+                            </h5>
+                            @if (Model.Planet.SurfaceWater >= 0)
+                            {
+                                <span>@Model.Planet.SurfaceWater</span>
+                            }
+                            else
+                            {
+                                <span>Unkown</span>
+                            }
+                        </div>
+                    </div>
+                    <h4>Details Information</h4>
+                    <div class="detail-info">
+                        @if (Model.Planet.Details != null)
+                        {
+                            <div>
+                                <h5 @if (Model.Planet.Details.RotationPeriod <= 0) { @: class="uknown"
+                                    }>
+                                    Rotation Perdiod
+                                </h5>
+                                @if (Model.Planet.Details.RotationPeriod > 0)
+                                {
+                                    <span>@Model.Planet.Details.RotationPeriod</span>
+                                }
+                                else
+                                {
+                                    <span>Unkown</span>
+                                }
+                            </div>
+                            <div>
+                                <h5 @if (Model.Planet.Details.OrbitalPeriod <= 0) { @: class="uknown"
+                                    }>
+                                    Orbital Perdiod
+                                </h5>
+                                @if (Model.Planet.Details.OrbitalPeriod > 0)
+                                {
+                                    <span>@Model.Planet.Details.OrbitalPeriod</span>
+                                }
+                                else
+                                {
+                                    <span> Unkown</span>
+                                }
+                            </div>
+                            <div>
+                                <h5 @if (Model.Planet.Details.Diameter <= 0) { @: class="uknown"
+                                    }>
+                                    Diameter
+                                </h5>
+                                @if (Model.Planet.Details.Diameter > 0)
+                                {
+                                    <span>@Model.Planet.Details.Diameter</span>
+                                }
+                                else
+                                {
+                                    <span>Unkown</span>
+                                }
+                            </div>
+                            <div>
+                                <h5 @if (Model.Planet.Details.Population <= 0) { @: class="uknown"
+                                    }>
+                                    Population
+                                </h5>
+                                @if (Model.Planet.Details.Population > 0)
+                                {
+                                    <span>@Model.Planet.Details.Population</span>
+                                }
+                                else
+                                {
+                                    <span>Unkown</span>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <h4 class="uknown">Details Uknown</h4>
+                        }
+                    </div>
+                    <h4>Terrain Information</h4>
+                    <div class="terrain-info">
+                        @if (Model.Planet.SurfaceMorphologies.Count > 0)
+                        {
+                            foreach (var terrain in Model.Planet.SurfaceMorphologies.Select(sm => sm.Terrain).ToList())
+                            {
+                                <div style="border: .5px solid @terrain.DisplayColor;">
+                                    <div>@terrain.Name</div>
+                                    <div style="background-color: @terrain.DisplayColor;"></div>
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            <h4 class="uknown">Terrains Unkown</h4>
+                        }
+
+                    </div>
+                    <h4>Climate Information</h4>
+                    <div class="climate-info">
+                        @if (Model.Planet.ClimateZones.Count > 0)
+                        {
+                            foreach (var climate in Model.Planet.ClimateZones.Select(sm => sm.Climate).ToList())
+                            {
+                                <div style="border: .5px solid @climate.DisplayColor;">
+                                    <div>@climate.Name</div>
+                                    <div style="background-color: @climate.DisplayColor;"></div>
+                                </div>
+
+                            }
+                        }
+                        else
+                        {
+                            <h4 class="uknown">Climates Unkown</h4>
+                        }
+
+                    </div>
+                </div>
+                <div class="planet-info race-info" id="race-info" style="display: none;">
+                    @if (Model.Planet.RaceHabitats.Count > 0)
+                    {
+                        foreach (var race in Model.Planet.RaceHabitats.Select(rh => rh.Race))
+                        {
+                            <div>
+                                <div>
+                                    @race.Name
+                                </div>
+                                <a href="/UserRace/Race/@race.RaceID">
+                                        <img src="data:image/jpg;base64,@System.Convert.ToBase64String(race.Avatar)" , race.Avatar)" 
+                                             alt="@race.Name avatar " />
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <h4 class="uknown">Races Unkown</h4>
+                    }
+                </div>
+                <div class="photo-gallery" id="photo-gallery" style="display: none;">
+                    @if (Model.Images.Count > 0)
+                    {
+
+                        <!-- Slideshow container -->
+                        <div class="slideshow-container">
+
+                            <!-- Full-width images with number and caption text -->
+                            @foreach (var image in Model.Images)
+                            {
+                                <div class="mySlides fade">
+                                    <div class="numbertext">@(imageNumber++) / @Model.Images.Count</div>
+                                    <img style="width:100%" src="~/App_Assets/@image.Path" alt="image earth slide">
+                                </div>
+                            }
+
+                            <!-- Next and previous buttons -->
+                            <a class="prev">&#10094;</a>
+                            <a class="next">&#10095;</a>
+                        </div>
+                        <br>
+
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                            @foreach (var image in Model.Images)
+                            {
+                                <span class="dot" data-image="@(imageNumber2++)"></span>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <h4 class="uknown" style="margin-left: 15px;">No Images Found!</h4>
+                    }
+                </div>
+                <div class="planet-info" id="planet-flights" style="display: none; padding-bottom: 80px; margin-top: -25px">
+                    <h4>Destinations</h4>
+                    @if (Model.Departures.Count == 0)
+                    {
+                        <h4 class="uknown">No fligth paths as departure!</h4>
+                    }
+                    else
+                    {
+                        foreach (var flightPath in Model.Departures)
+                        {
+                            <div class="row flight-path">
+                                <div class="col-xs-2">From</div>
+                                <div class="col-xs-3" style="padding: 0px;">
+                                    <div class="col-xs-2" style="padding: 0px;"><img src="~/images/internet.png" style="margin-top: -1px;" /> </div>
+                                    <div class="col-xs-10" style="padding: 0px;  text-align: left;"> @flightPath.Departure.Name</div>
+                                </div>
+                                <div class="col-xs-1">to</div>
+                                <div class="col-xs-3" style="padding: 0px;">
+                                    <div class="col-xs-2" style="padding: 0px;"><img src="~/images/internet.png"  style="margin-top: -1px; margin-left: 2px;"/></div>  
+                                    <div class="col-xs-10" style="padding: 0px; text-align: left;">@flightPath.Destination.Name</div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <a href="/UserFlights/Flights/des=@flightPath.Destination.Name$dep=@flightPath.Departure.Name">    
+                                        <img src="~/images/spaceship.png" />
+                                        Flights
+                                     </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <h4 style="margin-top: 20px;">Departures</h4>
+                    @if (Model.Destinations.Count == 0 )
+                    {
+                        <h4 class="uknown">No fligth paths as destination!</h4>
+                    }
+                    else
+                    {
+                        foreach (var flightPath in Model.Destinations)
+                        {
+                            <div class="row flight-path">
+                                <div class="col-xs-2">From</div>
+                                <div class="col-xs-3" style="padding: 0px;">
+                                    <div class="col-xs-2" style="padding: 0px;"><img src="~/images/internet.png" style="margin-top: -1px;" /> </div>
+                                    <div class="col-xs-10" style="padding: 0px;  text-align: left;"> @flightPath.Destination.Name</div>
+                                </div>
+                                <div class="col-xs-1">to</div>
+                                <div class="col-xs-3" style="padding: 0px;">
+                                    <div class="col-xs-2" style="padding: 0px;"><img src="~/images/internet.png"  style="margin-top: -1px; margin-left: 2px;"/></div>  
+                                    <div class="col-xs-10" style="padding: 0px; text-align: left;">@flightPath.Departure.Name</div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <a href="/UserFlights/Flights/des=@flightPath.Destination.Name$dep=@flightPath.Departure.Name">    
+                                        <img src="~/images/spaceship.png" />
+                                        Flights
+                                     </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+        <article class="card card--planet">
+            <div class="planet-availability">
+                <span>@Model.Planet.Name</span> <span @if (Model.Planet.IsActive) { @: class="planet-available">Available</span>
+            }
+            else
+            {
+                @: class="planet-unavailable">Unavailable
+            }
+</div>
+<div class="card__planet">
+    <div class="planet__atmosphere">
+        <div class="planet__surface"
+             @if (Model.Planet.Avatar.Length > 0) { @: style="
+                             @:background-image: url(@imgSrc);
+                             @:background-size: cover;
+                             @:animation: planetRotate calc(
+                                if (Model.Planet.Details != null)
+                                {
+                                    if (Model.Planet.Details.RotationPeriod > 0)
+                                    {
+                                        @Model.Planet.Details.RotationPeriod
+                                    } else
+                                    {
+                                        @rotation
+                     }
+                 } else
+                 {
+                     @rotation
+                 }
+                                @:*.4s) linear infinite;">
+        }
+        else
+        {
+            @:><img src="/images/null-image.jpg" style="height: 100%; width: auto;" />
+        }
+</div>
+</div>
+</div>
+</article>
+
+
+
+</div>
+
+</div>
+
+@Styles.Render("~/Content/custom/planetUser.css")
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/userPlanet")
+}

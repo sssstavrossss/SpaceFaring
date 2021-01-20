@@ -1,0 +1,108 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.OrderViewModels.DisplayOrderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Orders</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no orders yet</p>
+}
+else
+{
+    <table class="table table-responsive table-striped text-center table-bordered" id="orders">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BuyerEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InvoiceId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.OrderId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.BuyerEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.InvoiceId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => order.CreationDate)
+                    </td>
+                    <td>
+                        <button class="btn btn-success js-get-order-tickets" data-order-id="@order.OrderId">See Details</button>
+                        @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                        {
+                            <button class="btn btn-danger js-delete" data-delete-order-id="@order.OrderId">Delete</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts
+   {
+        @Scripts.Render("~/bundles/order")
+
+        <script>
+            $(document).ready(function () {
+                OrderController.initializeDataTable("#orders");
+                OrderController.initializeGetOrderTickets("#orders");
+                OrderController.initializeDeleteOrder("#orders", CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+        </script>
+    }
+}
+else
+{
+    @section scripts
+        {
+        @Scripts.Render("~/bundles/order")
+
+        <script>
+            $(document).ready(function () {
+                OrderController.initializeDataTable("#orders");
+                OrderController.initializeGetOrderTickets("#orders");
+            });
+        </script>
+    }
+}
+
+

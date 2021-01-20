@@ -1,0 +1,124 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
+
+#navbar-logo {
+    width: 30px
+}
+
+.table > thead > tr > th, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > tbody > tr > td, 
+.table > tfoot > tr > td {
+    vertical-align: middle;
+    text-align:center;
+}
+
+    .table > thead > tr > th > img,
+    .table > tbody > tr > th > img,
+    .table > tfoot > tr > th > img,
+    .table > thead > tr > td > img,
+    .table > tbody > tr > td > img,
+    .table > tfoot > tr > td > img{
+        display: inline-flex;
+        max-height:100px;
+    }
+
+#planet-form .image-container {
+    position: relative;
+}
+
+    #planet-form .image-container img,
+    #planet-form #avatar-preview > img,
+    #planet-form #saved-images > .panel-body img, 
+    #race-form #avatar-preview > img {
+        margin: 7px;
+        max-height: 150px;
+    }
+
+    #planet-form .image-container .panel-heading {
+        display: flex;
+        justify-content: space-between;
+    }
+
+#planet-form .saved-image-container {
+    position: relative;
+    display: inline-block;
+}
+
+    #planet-form .saved-image-container .js-remove-image {
+        top: 0px;
+        right: 0px;
+        margin: 7px;
+        position: absolute;
+        z-index: 1;
+    }
+
+#planet-form .removed {
+    filter: opacity(40%);
+}
+
+table#climates .color-displayer,
+table#terrains .color-displayer {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+#flights .seat-btn, 
+#flights .js-delete {
+    margin-top:5px;
+}
+
+.js-hard-delete{
+    background-color:black;
+    color:#fff;
+    border-color:#fff;
+}
+
+.js-hard-delete:hover {
+    background-color: #2e2929;
+}
+
+.about-text{
+    font-size:20px;
+}
+
+.form-account input, .form-account select {
+    color: black !important;
+    border: 1px solid black !important;
+}
+

@@ -1,0 +1,38 @@
+﻿@using Space101.AppExtensions
+@using Space101.Helper_Models
+
+@{
+    Layout = "";
+}
+
+<div id="particles-js">
+    <div id="homepage-navbar">
+        <div class="container">
+            <div class="row">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div id="login">@Html.ActionLink("Log in", "Login", "Account")</div>
+                    <div id="register">@Html.ActionLink("Register", "Register", "Account")</div>
+                }
+                else
+                {
+                    <h2 id="greeting">Greetings @User.Identity.GetNickName()</h2>
+                }
+            </div>
+            <div class="row">
+                @if (User.IsInRole(AvailableRoles.Admin))
+                {
+                    <div id="continue">@Html.ActionLink("Continue", "Index", "DatabaseStatistic")</div>
+                }
+                else
+                {
+                    <div id="continue">@Html.ActionLink("Continue", "Index", "Home")</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/particle")
+@Styles.Render("~/Content/particlejs/particlejs.css")
+@Styles.Render("~/Content/custom/intropage.css")

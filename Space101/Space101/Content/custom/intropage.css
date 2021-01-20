@@ -1,0 +1,65 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+
+#homepage-navbar {
+    position: absolute;
+    top: 59%;
+    left: 49%;
+    z-index: 3001;
+    transform: translate(-50%, 0);
+    font-family: Goldman;
+}
+
+    #homepage-navbar .container .row {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+
+#greeting {
+    color: white;
+    text-align: center;
+}
+
+#login,
+#continue,
+#register {
+    width: 180px;
+    text-align: center;
+    transform: scale(0.85);
+    padding: 12px 24px;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: .2s;
+    background-color: #010311;
+}
+
+    #login:hover,
+    #continue:hover,
+    #register:hover {
+        transform: scale(1.0);
+        background-color: #4EFBDA;
+        border: 1px solid #4EFBDA;
+        color: #010311;
+        cursor: pointer;
+    }
+        #login:hover a,
+        #continue:hover a,
+        #register:hover a {
+            color: #010311;
+        }
+
+    #login a,
+    #continue a,
+    #register a{
+        text-decoration: none;
+        color: white;
+        transition: 0.2s;
+        font-size: 18px;
+    }
+
+#register,
+#continue,
+#register{
+    margin-left: 5px;
+}
+

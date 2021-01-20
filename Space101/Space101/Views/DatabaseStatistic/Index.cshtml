@@ -1,0 +1,208 @@
+﻿@model Space101.ViewModels.DataBaseStatisticsViewModels.DatabaseNumbersViewModel
+
+@{
+    ViewBag.Title = "AdminIndex";
+}
+
+<div class="container" id="database-statistics">
+    <br />
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Latest Data Update: <span id="dataset-timestamp">@Model.DatabaseTimeStamp</span></h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <button class="btn btn-primary" id="get-latest-data-btn">Get Latest Data</button>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid" id="database-numbers">
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">Basic Database Numbers</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Planets):
+                            </dt>
+                            <dd id="planets-number">
+                                @Model.Planets
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Flightpaths):
+                            </dt>
+                            <dd id="flightPaths-number">
+                                @Model.Flightpaths
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Flights):
+                            </dt>
+                            <dd id="flighs-number">
+                                @Model.Flights
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Starships):
+                            <dd id="starships-number">
+                                @Model.Starships
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Climates):
+                            </dt>
+                            <dd id="climates-number">
+                                @Model.Climates
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Terrains):
+                            </dt>
+                            <dd id="terrains-number">
+                                @Model.Terrains
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Races):
+                            </dt>
+                            <dd id="races-number">
+                                @Model.Races
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.RaceClassification):
+                            </dt>
+                            <dd id="raceClassifications-number">
+                                @Model.RaceClassification
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Users):
+                            </dt>
+                            <dd id="users-number">
+                                @Model.Users
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Orders):
+                            </dt>
+                            <dd id="orders-number">
+                                @Model.Orders
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Tickets):
+                            </dt>
+                            <dd id="tickets-number">
+                                @Model.Tickets
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Revenue):
+                            </dt>
+                            <dd id="revenues-number">
+                                @Model.Revenue
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3>Planet Information</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="planetsPerClimate" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="planetsPerTerrain" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3>Flight Information</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div style="width:100%;">
+                    <canvas id="flightPerStatus" width="200" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div style="width:100%;">
+                    <canvas id="flightsPerDate" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3>Flight Details</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="flightOcupancyRate" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="flightRevenuePerDistance" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="flightExpectedRevenue" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="width:100%;">
+                    <canvas id="flightTicketRevenue" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    @Scripts.Render("~/bundles/databaseStatistics")
+
+    <script>
+
+        $(document).ready(function () {
+            DatabaseStatisticsController.init("#get-latest-data-btn");
+        });
+
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@model Space101.ViewModels.TicketViewModels.TicketFormContainer
+
+
+@for (int i = 0; i < Model.TicketFormViewModels.Count; i++)
+{
+<div class="row">
+    <div class="col-md-6">
+        @Html.HiddenFor(t => Model.TicketFormViewModels[i].TicketId)
+        @Html.HiddenFor(t => Model.TicketFormViewModels[i].SeatId)
+        @Html.HiddenFor(t => Model.TicketFormViewModels[i].FlightId)
+        @Html.HiddenFor(t => Model.TicketFormViewModels[i].Price)
+
+        <div class="form-group">
+            @Html.LabelFor(t => Model.TicketFormViewModels[i].FirstName, new { @class = "col-form-label" })
+            @Html.TextBoxFor(t => Model.TicketFormViewModels[i].FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(t => Model.TicketFormViewModels[i].FirstName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(t => Model.TicketFormViewModels[i].LastName, new { @class = "col-form-label" })
+            @Html.TextBoxFor(t => Model.TicketFormViewModels[i].LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(t => Model.TicketFormViewModels[i].LastName)
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(t => Model.TicketFormViewModels[i].PlanetId, new { @class = "col-form-label" })
+            @Html.DropDownListFor(t => Model.TicketFormViewModels[i].PlanetId, new SelectList(Model.Planets, "PlanetId", "Name"), "Select Homeplanet", new { @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.TicketFormViewModels[i].PlanetId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(t => Model.TicketFormViewModels[i].RaceId, new { @class = "col-form-label" })
+            @Html.DropDownListFor(t => Model.TicketFormViewModels[i].RaceId, new SelectList(Model.Races, "ID", "Name"), "Select Race", new { @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.TicketFormViewModels[i].RaceId)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        Ticket Price: @Model.TicketFormViewModels[i].Price;
+    </div>
+</div>
+
+<hr />
+}
+
+
+

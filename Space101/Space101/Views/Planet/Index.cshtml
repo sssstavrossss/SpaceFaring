@@ -1,0 +1,141 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.PlanetViewModels.DisplayPlanetViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Planets</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no planets yet</p>
+    if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+    {
+        @Html.ActionLink("Create Planet", "New", "Planet", null, new { @class = "btn btn-primary" })
+    }
+
+}
+else
+{
+    <table class="table table-responsive table-striped text-center table-bordered" id="planets">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlanetID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Avatar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gravity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SurfaceWater)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th class="text-center">
+                        @Html.ActionLink("Create Planet", "New", "Planet", null, new { @class = "btn btn-primary" })
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fullplanet in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => fullplanet.PlanetID)
+                    </td>
+                    <td>
+                        @if (fullplanet.Avatar.Length <= 0)
+                        {
+                            <img class="img-responsive" width="150" src="#" />
+                        }
+                        else
+                        {
+                            <img class="img-responsive" style="max-width:120px" src="data:image/jpg;base64,@(Convert.ToBase64String(fullplanet.Avatar))" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => fullplanet.Name)
+                    </td>
+                    <td>
+                        @if (fullplanet.Gravity < 0)
+                        {
+                            <i>no info available</i>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => fullplanet.Gravity)
+                        }
+                    </td>
+                    <td>
+                        @if (fullplanet.SurfaceWater < 0)
+                        {
+                            <i>no info available</i>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => fullplanet.SurfaceWater)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => fullplanet.Title)
+                    </td>
+                    @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td>
+                            @Html.ActionLink("Details", "Details", "Planet", new { id = fullplanet.PlanetID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Edit", "Edit", "Planet", new { id = fullplanet.PlanetID }, new { @class = "btn btn-success" })
+                            <button class="btn btn-danger js-delete" data-planet-id="@fullplanet.PlanetID">Delete</button>
+                            @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                            {
+                                <button class="btn btn-danger js-hard-delete" data-planet-id="@fullplanet.PlanetID">Hard Delete</button>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/planet")
+
+        <script>
+            $(document).ready(function () {
+                PlanetController.initializeDatatable("#planets");
+                PlanetController.initializeDelete('#planets', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+                PlanetController.initializeHardDelete('#planets', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+        </script>
+    }
+}
+else
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/planet")
+
+        <script>
+            $(document).ready(function () {
+                PlanetController.initializeDatatable("#planets");
+                PlanetController.initializeDelete('#planets', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            });
+        </script>
+    }
+}

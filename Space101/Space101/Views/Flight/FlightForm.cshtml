@@ -1,0 +1,138 @@
+﻿@model Space101.ViewModels.FlightViewModels.ContainerFlightFormViewModel
+@{
+    ViewBag.Title = "FlightForm";
+}
+<br />
+@if (Model.Action == "New")
+{
+    <h2>Create New Flight</h2>
+}
+else
+{
+    <h2>Edit Flight With Id: @Model.FlightFormViewModel.FlightId</h2>
+}
+<br />
+@using (Html.BeginForm("Save", "Flight"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(f => f.FlightFormViewModel.FlightId)
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(f => f.FlightFormViewModel.Date, new { @class = "col-form-label" })*
+                <div class='input-group date' id='datePicker'>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    @Html.TextBoxFor(f => f.FlightFormViewModel.Date, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(f => f.FlightFormViewModel.Date)
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div>
+                <div class="form-group">
+                    @Html.LabelFor(f => f.FlightFormViewModel.Time, new { @class = "col-form-label" })*
+                    <div class='input-group date' id='timePicker'>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                        @Html.TextBoxFor(f => f.FlightFormViewModel.Time, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(f => f.FlightFormViewModel.Time)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(f => f.FlightFormViewModel.BasePrice, new { @class = "col-form-label" })*
+                @Html.TextBoxFor(f => f.FlightFormViewModel.BasePrice, new { @class = "form-control" })
+                @Html.ValidationMessageFor(f => f.FlightFormViewModel.BasePrice)
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(f => f.FlightFormViewModel.IsVIP)
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        @if (Model.Action == "New")
+                        {
+                            @Html.CheckBoxFor(f => f.FlightFormViewModel.IsVIP)
+                        }
+                        else
+                        {
+                            @Html.CheckBoxFor(f => f.FlightFormViewModel.IsVIP, new { @class = "disabled", disabled = true })
+                        }
+                    </span>
+                    <input type="text" class="form-control" value="Check for VIP Flights" disabled />
+                    @Html.ValidationMessageFor(f => f.FlightFormViewModel.IsVIP)
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(f => f.FlightFormViewModel.FlightPathId, new { @class = "col-form-label" })*
+                @if (Model.Action == "New")
+                {
+                    @Html.DropDownListFor(f => f.FlightFormViewModel.FlightPathId, new SelectList(Model.FlightPaths, "FlightPathId", "Name"), "Select FlightPath", new { @class = "form-control", id = "flightPathId" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(f => f.FlightFormViewModel.FlightPathId, new SelectList(Model.FlightPaths, "FlightPathId", "Name"), "Select FlightPath", new { @class = "form-control disabled", id = "flightPathId", disabled = true })
+                }
+                @Html.ValidationMessageFor(f => f.FlightFormViewModel.FlightPathId)
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(f => f.FlightFormViewModel.StarshipId, new { @class = "col-form-label" })*
+                @if (Model.Action == "New")
+                {
+                    @Html.DropDownListFor(f => f.FlightFormViewModel.StarshipId, new SelectList(Model.Starships, "StarshipId", "Name"), "Select Starship", new { @class = "form-control", id = "StarshipId" })
+                }
+                else
+                {
+                    @Html.DropDownListFor(f => f.FlightFormViewModel.StarshipId, new SelectList(Model.Starships, "StarshipId", "Name"), "Select Starship", new { @class = "form-control disabled", id = "StarshipId", disabled = true })
+                }
+                @Html.ValidationMessageFor(f => f.FlightFormViewModel.StarshipId)
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", "Flight", null, new { @class = "btn btn-danger" })
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryvalCustomLocals")
+
+    <script>
+
+        $(document).ready(function () {
+            LocalCultureController.initLocalCulture();
+            CustomDateTimePick.initAfterToday(LocalCultureController.cultureName);
+        });
+
+    </script>
+
+}

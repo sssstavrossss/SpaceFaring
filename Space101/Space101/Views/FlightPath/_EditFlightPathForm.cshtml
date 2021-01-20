@@ -1,0 +1,23 @@
+﻿@model Space101.ViewModels.FlightPathViewModels.FlightPathFormViewModel
+
+@Html.HiddenFor(fp => fp.FlightPathId)
+
+@Html.HiddenFor(fp => fp.DepartureId)
+@Html.HiddenFor(fp => fp.DepartureName)
+<div class="form-group">
+    @Html.LabelFor(fp => fp.DepartureName, new { @class = "col-form-label" })
+    @Html.TextBoxFor(fp => fp.DepartureName, new { @class = "form-control", disabled = true })
+</div>
+
+@Html.HiddenFor(fp => fp.DestinationId)
+@Html.HiddenFor(fp => fp.DestinationName)
+<div class="form-group">
+    @Html.LabelFor(fp => fp.DestinationName, new { @class = "col-form-label" })
+    @Html.TextBoxFor(fp => fp.DestinationName, new { @class = "form-control", disabled = true })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(fp => fp.Distance, new { @class = "col-form-label" })
+    @Html.TextBoxFor(fp => fp.Distance, new { @class = "form-control" })
+    @Html.ValidationMessageFor(fp => fp.Distance)
+</div>

@@ -1,0 +1,124 @@
+﻿
+
+/*************************Order CARDS**********************/
+.order-row {
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,.1);
+    padding: 10px;
+    border-radius: 15px;
+    border: .5px solid rgba(255,255,255,.13);
+    backdrop-filter: blur(1px);
+    transition: .3s;
+}
+
+    .order-row:hover {
+        background-color: rgba(255,255,255,.13);
+        border: .5px solid rgba(255,255,255,.17);
+        backdrop-filter: blur(1.5px);
+    }
+
+    .order-row > div {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+
+.order-details-id, .order-details-payment, .order-details-date, .order-details-price {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 3px 4px;
+    text-align: center;
+    border: .5px solid rgba(255,255,255,.33);
+    border-radius: 15px;
+    background-color: rgba(255,255,255,.07);
+    transition: .3s;
+}
+
+    .order-details-id:hover, .order-details-payment:hover, .order-details-date:hover, .order-details-price:hover {
+        background-color: rgba(255,255,255,.14);
+        border: .5px solid rgba(255,255,255,.55);
+    }
+
+.order-details-id, .order-details-date {
+    margin-bottom: 9.5px;
+}
+
+
+    .order-details-id div:not(:first-child),
+    .order-details-payment div:not(:first-child),
+    .order-details-price div:not(:first-child),
+    .order-details-date div:not(:first-child) {
+        margin-top: 6px;
+    }
+
+.order-details-id div,
+.order-details-payment div,
+.order-details-date div,
+.order-details-price div {
+    margin-right: 6px;
+    margin-left: 2px;
+}
+
+
+.order-view-detail-btn {
+    height: 84px;
+    width: 100%;
+    background-color: rgba( 150, 29, 100,.13);
+    border: .5px solid rgba( 150, 29, 100,.33);
+    letter-spacing: 1px;
+    font-size: 14px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+    .order-view-detail-btn:hover {
+        background-color: rgba( 150, 29, 100,.33);
+        border: .5px solid rgba( 150, 29, 100,.77);
+    }
+
+.page-link {
+    font-size: 16px !important;
+    background-color: transparent !important;
+    border-radius: 10px !important;
+    border: 1px solid white !important;
+    cursor: pointer !important;
+}
+
+.order-number {
+    background-color: white;
+    border-radius: 10px 0px 0px 10px;
+    color: black;
+    margin-right: 12px;
+    padding: 4px 8px;
+}
+
+h2 {
+    margin-bottom: 22px;
+    border: 1px solid white;
+    width: 240px;
+    padding: 4px 0px;
+    border-radius: 10px;
+}
+
+.order-view-detail-div a {
+    color: white;
+}
+
+.order-view-detail-div a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.order-view-detail-div p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.order-details img {
+    height: 30px;
+    width: auto;
+    padding: 2.5px 6px;
+}
+

@@ -1,0 +1,10 @@
+﻿@using Space101.Helper_Models
+
+@if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+else
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}

@@ -1,0 +1,61 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="navbar-brand" href="@Url.Action("Index","DatabaseStatistic")">
+                        <img alt="logo" class="img-responsive" id="navbar-logo" src="~/images/SpaceFaringLogoWeb.png" />
+                    </a>
+                </li>
+                <li>@Html.ActionLink("Home", "Index", "DatabaseStatistic")</li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Planet<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Planets", "Index", "Planet")</li>
+                        <li>@Html.ActionLink("Climates", "Index", "Climate")</li>
+                        <li>@Html.ActionLink("Terrains", "Index", "Terrain")</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Races<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Race Classifications", "Index", "RaceClassification")</li>
+                        <li>@Html.ActionLink("Races", "Index", "Race")</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Flights<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Flights", "Index", "Flight")</li>
+                        <li>@Html.ActionLink("Flight Paths", "Index", "FlightPath")</li>
+                        <li>@Html.ActionLink("Starships", "Index", "Starship")</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Users", "Index", "User")</li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Orders<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Orders", "Index", "Order")</li>
+                        <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+            @Html.Partial("_AdminLoginPartial")
+        </div>
+    </div>
+</div>

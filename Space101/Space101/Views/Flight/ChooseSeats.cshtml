@@ -1,0 +1,154 @@
+﻿@model Space101.ViewModels.FlightViewModels.FullFlightViewModel
+
+@{
+    ViewBag.Title = "ChooseSeats";
+}
+
+<h2>Choose Your Seats</h2>
+
+<div class="row heading" style="margin-left: 25px;">
+
+    <div class="col-xs-5">
+        <div class="row">
+            <div>
+                <img src="~/images/internet.png" />  Departure Planet: @Html.DisplayFor(f => f.FlightPath.Departure.Name)
+            </div>
+            <div>
+                <img src="~/images/internet.png" />    Destination Planet: @Html.DisplayFor(f => f.FlightPath.Destination.Name)
+            </div>
+            <div>
+                <img src="~/images/timetable.png" />    @Html.NameFor(f => f.Date) : @Html.DisplayFor(f => f.Date)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-5">
+        <div class="row">
+            <div>
+                <img src="~/images/ticket.png" />   Flight Status: @Html.DisplayFor(f => f.FlightStatus.StatusName)
+            </div>
+            <div>
+                <img src="~/images/spaceship.png" />   Starship Model: @Html.DisplayFor(f => f.Starship.Model)<br />
+            </div>
+            <div>
+                <img src="~/images/info.png" />    Starship Passenger Capacity: @Html.DisplayFor(f => f.Starship.PassengerCapacity)<br />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-2 vip">
+        VIP: @(Model.IsVIP?"YES":"NO") <br />
+    </div>
+    
+
+</div>
+
+@using (Html.BeginForm("CheckSeatAvailability", "Flight"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container" id="flightSeats" data-flight-id="@Model.FlightId">
+        @Html.HiddenFor(f => f.FlightId)
+        @Html.ValidationMessage("MinimunSeats")
+        @Html.ValidationMessage("UnavailableSeats")
+        <div class="row main-row" style="">
+            @{
+                int counter = 1;
+                string prevClass = "";
+            }
+            @for (var i = 0; i < Model.Seats.Count; i++)
+            {
+                if (prevClass != Model.Seats[i].TravelClassId)
+                {
+                    counter = 1;
+                @:</div>
+                <div class="row" style="margin-left:10px;">
+                    <div class="col-md-12 travel-class">Seat Class:  @Model.Seats[i].TravelClassId - Price: @Model.Seats[i].GetPrice()$</div>
+                </div>
+                @: <div class="row" style="margin-left:60px; margin-right: -60px;">
+                }
+
+                <div class="col-xs-2 checkbox-div">
+                    @if (Model.Seats[i].IsAvailable)
+                    {
+                        <div id="@Model.Seats[i].FlightSeatId">
+                            <input type="checkbox" name="flightSeatIds" value="@Model.Seats[i].FlightSeatId" />
+                            <span class="css-label">@Model.Seats[i].Code</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div id="@Model.Seats[i].FlightSeatId" >
+                            <span><input type="checkbox" class="inactive" disabled data-seat-id="@Model.Seats[i].FlightSeatId" /></span>
+                            <span class="css-label-inactive">@Model.Seats[i].Code</span>
+                        </div>
+                    }
+
+                </div>
+
+                if (counter % 6 == 0)
+                {
+                @:</div>
+                @:<div class="row" style="margin-left:60px; margin-right: -60px;">
+                }
+
+                counter++;
+                prevClass = Model.Seats[i].TravelClassId;
+            }
+        </div>
+    </div>
+
+    <div class="row btn-row">
+        <button type="submit" disabled class="btn btn-primary" id="btn-submit">Save</button>
+        @Html.ActionLink("Cancel", "Flights", "UserFlights", null, new { @class = "btn btn-danger", id = "btn-cancel" })
+    </div>
+
+}
+
+@Styles.Render("~/Content/custom/userSeat.css")
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/flight")
+    @Scripts.Render("~/bundles/signalR")
+
+    <script>
+
+        $(document).ready(function () {
+            FlightController.initializeChooseSeatFlightHub();
+
+            (function () {
+                let checks = $("input[type=checkbox]:checked");
+                let submit = $("[type=submit]");
+
+                if (checks.length > 0) {
+                    submit.attr("disabled", false);
+                }
+                else {
+                    submit.attr("disabled", true);
+                }
+            })();
+
+            $("#flightSeats").on("click", "input", function () {
+                let checks = $("input[type=checkbox]:checked");
+                let submit = $("[type=submit]");
+
+                if (checks.length > 0) {
+                    submit.attr("disabled", false);
+                }
+                else {
+                    submit.attr("disabled", true);
+                }
+            });
+
+            //let cleared = sessionStorage.getItem("cleared");
+
+            //if (cleared) {
+            //    sessionStorage.removeItem("cleared");
+            //    window.history.back();
+            //}
+
+        });
+    </script>
+}
+

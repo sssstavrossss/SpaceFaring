@@ -1,0 +1,178 @@
+﻿.navbar-buttons {
+    display: flex;
+}
+
+.log-in {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+}
+
+.log-in ul {
+    list-style-type: none; 
+    display: flex;
+    justify-content: center;
+}
+
+.log-in ul li:last-child {
+    margin-left: 10px;
+}
+
+
+.home-button {
+}
+
+.home-button img {
+    height: 50px;
+    width: auto;
+    margin: 11px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background: #101932;
+    box-shadow: inset 6px 6px 18px #0a1021, inset -6px -6px 18px #162244;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.6s;
+}
+
+.user-sidenav {
+    max-height: 450px;
+    width: 220px;
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 50px;
+    right: 25px;
+    background: #101932;
+    box-shadow: inset 6px 6px 18px #0a1021, inset -6px -6px 18px #162244;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: 0.6s;
+    padding-bottom: 20px;
+    border-radius: 8px;
+}
+
+    .sidenav ul, .user-sidenav ul {
+        list-style-type: none;
+        width: 100%;
+        padding-left: 0px;
+    }
+
+        .sidenav ul li, .user-sidenav ul li {
+            padding: 8px 12px;
+            text-decoration: none;
+            font-size: 22px;
+            color: white;
+            background: linear-gradient(145deg, #101930, #131e39);
+            box-shadow: 14px 14px 28px #0f182d, -14px -14px 28px #15203d;
+            display: block;
+            transition: .3s;
+            margin-top: 25px;
+            border: none;
+            width: 100%;
+            transform: scale(.87);
+            border-radius: 15px;
+        }
+
+        .sidenav ul li:hover, .user-sidenav ul li:hover {
+            transform: scale(.98);
+        }
+
+
+        .sidenav  .dropdown  .drop-btn, .user-sidenav .dropdown .drop-btn {
+            background: transparent;
+            border: none;
+        }
+
+    .sidenav ul li a, .user-sidenav ul li a {
+        background: transparent;
+        text-decoration: none;
+        color: white;
+    }
+
+    .sidenav ul li .drop-menu a {
+        background: transparent;
+        text-decoration: none;
+        color: white;
+    }
+
+
+.dropdown {
+}
+
+.drop-menu {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    background: #26355c;
+    width: 100%;
+    text-align: center;
+    position: inherit;
+}
+
+.sidenav ul li:hover, .user-sidenav ul li:hover {
+    color: lightblue;
+    background: linear-gradient(145deg, #15203b, #101a33);
+    box-shadow: 14px 14px 28px #111a30, -14px -14px 28px #152242;
+}
+
+.sidenav ul li a:hover, .user-sidenav ul li a:hover {
+    color: lightblue;
+    text-decoration: none;
+}
+
+.sidenav ul li .drop-menu a:hover {
+    color: lightblue;
+    text-decoration: none;
+}
+
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+.user-sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-left: 30px;
+}
+
+
+.nav-btn-container {
+    margin: 8px;
+    height: 55px;
+    width: 55px;
+    border-radius: 100%;
+    background: #0b1328;
+    box-shadow: inset 7px 7px 15px #091022, inset -7px -7px 15px #0d162e;
+    position: relative;
+    transform: scale(.9);
+    transition: .2s;
+}
+
+    .nav-btn-container img {
+        height: 35px;
+        width: auto;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    .nav-btn-container:hover {
+        transform: scale(1);
+    }

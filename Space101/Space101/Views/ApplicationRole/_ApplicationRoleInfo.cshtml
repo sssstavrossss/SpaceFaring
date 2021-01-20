@@ -1,0 +1,32 @@
+﻿@model Space101.ViewModels.ApplicationRoleViewModels.ApplicationRoleContainerViewModel
+
+@if (Model.ApplicationRoles.Any())
+{
+    foreach (var role in Model.ApplicationRoles)
+    {
+        <div class="role-tag" data-id="@role.Id">
+            <span class="role-name">@role.Name</span>
+            <span title="Toggle Active" class="js-activity
+                  @if (role.Active)
+                  {
+                      @:active
+                  }else
+                  {
+                      @:inactive
+                  }">
+                @if (role.Active)
+                {
+                    @:&#10004;
+                }
+                else
+                {
+                    @:&#10006;
+                }
+            </span>
+      </div>
+    }
+}
+else
+{
+    <p>There are no Roles Yet!</p>
+}

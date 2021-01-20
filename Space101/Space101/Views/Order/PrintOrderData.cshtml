@@ -1,0 +1,224 @@
+﻿@model Space101.ViewModels.OrderViewModels.PrintOrderViewModel
+
+
+
+@using (Html.BeginForm("PrintPdf", "Order"))
+{
+    @Html.HiddenFor(m => m.OrderId)
+    <input type="submit" value="Print pdf" id="print-pdf-btn" />
+}
+
+<div class="row order-row">
+
+    <div class="col-xs-12">
+        <div class="row order-header">
+            <div class="col-xs-12 header-details">
+                @*<div>
+                        <h2>Space Faring</h2>
+                    </div>*@
+                <div>
+                    <h1 style="letter-spacing: 5px;">Order Details</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row order-header">
+            <div class="col-xs-6 header-details">
+                <div>
+                    <h5>
+                        <img src="~/images/payment-method.png" /> Order Number: @Model.OrderId
+                    </h5>
+                </div>
+                <div class="header-details-info">
+                    <h5>
+                        <img src="~/images/attach.png" />Payment Number: @Model.InvoiceId
+                    </h5>
+                </div>
+            </div>
+            <div class="col-xs-6  header-details">
+                <div>
+                    <h5>
+                        <img src="~/images/timetable.png" />Order Date: @Model.CreationDate
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <img src="~/images/email.png" /> Buyer Email: @Model.BuyerEmail
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="row order-details-row">
+            <div class="col-xs-5 order-details-div">
+                <h5>Flight Information</h5>
+                <div class="order-detail-box">
+                    <div>
+                        <img src="~/images/lastname.png" />
+                    </div>
+                    <div>
+                        <div>Flight ID: </div>
+                        <div>@Model.FlightId</div>
+                    </div>
+                </div>
+                <div class="order-detail-box">
+                    <div>
+                        <img src="~/images/timetable.png" />
+                    </div>
+                    <div>
+                        <div>Flight Date:</div>
+                        <div>@Model.Tickets.First().FlightDate</div>
+                    </div>
+                </div>
+                <div class="order-detail-box">
+                    <div>
+                        <img src="~/images/spaceship.png" />
+                    </div>
+                    <div>
+                        <div>Starship: </div>
+                        <div>@Model.Tickets.First().StarshipModel</div>
+                    </div>
+                </div>
+                <div class="order-detail-box">
+                    <div>
+                        <img src="~/images/tickets.png" />
+                    </div>
+                    <div>
+                        <div>Tickets Total: </div>
+                        <div>@Model.Tickets.Count</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-5 order-details-div">
+                <h5>Ticket Information: </h5>
+                @foreach (var ticket in Model.Tickets)
+                {
+                    <div class="order-detail-box">
+                        <div>
+                            <img src="~/images/ticket.png" />
+                        </div>
+                        <div>
+                            <div>Ticket Number: </div>
+                            <div>@ticket.TicketId ,&nbsp;</div>
+                            <div>&nbsp;@ticket.Price&nbsp;&#36;</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-xs-2 order-totals">
+                <div class="total-price-box">
+                    <div>
+                        <div style="display: flex; background-color: rgba(255,255,255,.33); margin-bottom: 0px; border-radius: 15px 15px 0px 0px; padding-bottom: 7px;">
+                            <span><img style="margin-top: 6px; margin-left: 6px;" src="~/images/dollar.png" /></span>
+                            <h4 style="margin-left: 3px;">Total Price</h4>
+                        </div>
+                        <h4 style="background-color: orangered; border-radius: 0px 0px 15px 15px; padding: 5px 3px; margin-bottom: 0px; margin-top: 0px;">&nbsp;@Model.TotalPrice&#36;</h4>
+                    </div>
+                </div>
+                <div class="payment-method-box">
+                    <div>
+                        <div style="display: flex; background-color: rgba(255,255,255,.33); margin-bottom: 0px; border-radius: 15px 15px 0px 0px;">
+                            <span>
+                                <img style="margin-top: 11px; margin-left: 9px;" src="~/images/payment-method.png" />
+                            </span>
+                            <h4 style="margin-left: -8px;">Payment Method: </h4>
+                        </div>
+                        <h4 style="background-color: coral; border-radius: 0px 0px 15px 15px; padding: 5px 0px; margin-bottom: 0px; margin-top: 0px;">&nbsp;Paypal</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@foreach (var ticket in Model.Tickets)
+{
+
+    <div class="row flight-row">
+        <div class="col-xs-4">
+            <div class="flight-div">
+                <div class="flight-details">
+                    <div class="flight-details-departure">
+                        <div><img src="/images/firstname.png" alt="planet logo" style="height: 30px; width: auto;" /></div>
+                        <div>First Name: </div>
+                        <div>@ticket.FirstName</div>
+                    </div>
+                    <div class="flight-details-departure">
+                        <div><img src="/images/internet.png" alt="planet logo" style="height: 30px; width: auto;" /></div>
+                        <div>Departure: </div>
+                        <div>@ticket.DeparturePlanetName</div>
+                    </div>
+                    <div class="flight-details-destination">
+                        <div><img src="/images/internet.png" alt="planet logo" style="height: 30px; width: auto;" /></div>
+                        <div>Destination: </div>
+                        <div>@ticket.DestinationPlanetName</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="flight-div">
+                <div class="flight-details">
+                    <div class="flight-details-date">
+                        <div><img src="/images/lastname.png" alt="date logo" style="height: 30px; width: auto;" /></div>
+                        <div>Last Name: </div>
+                        <div>@ticket.LastName</div>
+                    </div>
+                    <div class="flight-details-date">
+                        <div><img src="/images/timetable.png" alt="date logo" style="height: 30px; width: auto;" /></div>
+                        <div>@ticket.FlightDate</div>
+                    </div>
+                    <div class="flight-details-price">
+                        <div><img src="/images/dollar.png" alt="dollar logo" style="height: 30px; width: auto;" /></div>
+                        <div>Price: </div>
+                        <div>@ticket.Price</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="col-xs-12 starship-div">
+                <div class="col-xs-12 starship-details">
+                    <div class="col-xs-1 starship-details-intro" style="padding: 0px; margin: 0px;">
+                        <div><img src="/images/spaceship.png" alt="spaceship logo" style="height: 65px; width: auto; margin-top: 22px;" /></div>
+                    </div>
+                    <div class="gamisemas col-xs-11" style="font-size: 18px;">
+                        <div class="col-xs-12 starship-details-name">
+                            <div class="col-xs-12">@ticket.StarshipModel</div>
+                        </div>
+                        <div class="col-xs-12 starship-details-passengers">
+                            <div class="col-xs-6">Ticket: </div>
+                            <div class="col-xs-6">@ticket.TicketId</div>
+                        </div>
+                        <div class="col-xs-12 starship-details-passengers">
+                            <div class="col-xs-6">Seat: </div>
+                            <div class="col-xs-6">@ticket.FlightSeatId</div>
+                        </div>
+                        <div class="col-xs-12 starship-details-travelclass">
+                            <div class="col-xs-6">Class: </div>
+                            <div class="col-xs-6">@ticket.TravelClassId</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div @if (Model.isVip) { @: class="col-xs-1 super-is-vip vip-super-div-inflight"
+             } else { @: class="col-xs-1 super-not-vip vip-super-div-inflight"
+             }>
+            <div @if (Model.isVip) { @: class="is-vip vip-div-inflight"
+                 } else { @: class="not-vip vip-div-inflight"
+                 }>
+                @if (Model.isVip)
+                {
+                    @: NO <br />
+                }
+                VIP
+            </div>
+        </div>
+    </div>
+}
+
+@Styles.Render("~/Content/custom/printOrderData.css")
+@section scripts {
+    @Scripts.Render("~/bundles/printOrderData")
+} 

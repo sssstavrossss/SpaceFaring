@@ -1,0 +1,135 @@
+﻿@model Space101.ViewModels.FlightViewModels.FullFlightViewModel
+
+@{
+    ViewBag.Title = "ChooseSeats";
+}
+<br />
+<h2>Manage Seats of Fligth with Id: @Model.FlightId</h2>
+<br />
+<div class="panel panel-info flight-information">
+    <div class="panel-heading">Flight Information</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Departure Planet:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.FlightPath.Departure.Name)
+                    </dd>
+                    <dt>
+                        Destination Planet:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.FlightPath.Destination.Name)
+                    </dd>
+                    <dt>
+                        Date:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.Date)
+                    </dd>
+                    <dt>
+                        Base Price:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.BasePrice)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Flight Status:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.FlightStatus.StatusName)
+                    </dd>
+                    <dt>
+                        Starship Model:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.Starship.Model)
+                    </dd>
+                    <dt>
+                        Passenger Capacity:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(f => f.Starship.PassengerCapacity)
+                    </dd>
+                    <dt>
+                        VIP:
+                    </dt>
+                    <dd>
+                        @(Model.IsVIP?"YES":"NO")
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-responsive table-striped table-condensed" id="flight-seats">
+    <thead>
+        <tr>
+            <th>
+                Seat Id
+            </th>
+            <th>
+                Seat Code
+            </th>
+            <th>
+                Travel Class
+            </th>
+            <th>
+                Current Price
+            </th>
+            <th>
+                Availability
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var seat in Model.Seats)
+        {
+            <tr class="@(seat.IsAvailable?"":"danger")">
+                <td>
+                    @Html.DisplayFor(modelItem => seat.FlightSeatId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => seat.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => seat.TravelClassId)
+                </td>
+                <td>
+                    @seat.GetPrice()
+                </td>
+                <td>
+                    @(seat.IsAvailable?"OPEN":"CLOSED")
+                </td>
+                <td>
+                    <button class="btn @(seat.IsAvailable?"btn-warning":"btn-danger") js-toggle-availability" data-seat-availability="@seat.IsAvailable" data-seat-id="@seat.FlightSeatId">@(seat.IsAvailable?"CLOSE":"OPEN")</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/flight")
+    @Scripts.Render("~/bundles/signalR")
+
+    <script>
+        $(document).ready(function () {
+            FlightController.initializeAdminsSeatDataTable("#flight-seats");
+            FlightController.initializeAdminsManageSeats("#flight-seats", CustomBootBoxAlerts.confirmManageSeat, CustomToasts.successManageModel, CustomToasts.failManageModel);
+            FlightController.initializeAdminsManageSeatFlightHub();
+        });
+    </script>
+}

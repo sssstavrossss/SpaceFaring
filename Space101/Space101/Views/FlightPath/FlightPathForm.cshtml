@@ -1,0 +1,34 @@
+﻿@model Space101.ViewModels.FlightPathViewModels.ContainerFlightPathFormViewModel
+
+@{
+    ViewBag.Title = "FlightPathForm";
+}
+<br />
+<h2>Create New Flight Path</h2>
+<br />
+
+@using (Html.BeginForm("Save", "FlightPath"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        @Html.Partial("_NewFlightPathForm", Model)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ActionLink("Cancel", "Index", "FlightPath", null, new { @class = "btn btn-danger" })
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryvalCustomLocals")
+    @Scripts.Render("~/bundles/flightPath")
+
+    <script>
+        $(document).ready(function () {
+            LocalCultureController.initLocalCulture();
+            FlightPathController.initializeDestinations('#departureId', '#destinationId', '#distance-display');
+        });
+    </script>
+}
+

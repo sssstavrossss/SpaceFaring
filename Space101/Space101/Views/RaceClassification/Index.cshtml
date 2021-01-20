@@ -1,0 +1,52 @@
+﻿<div class="row classification-body">
+
+    <div class="classification-header-div">
+        <h2 class="text-center">Race Classifications Control</h2>
+    </div>
+
+    <div class="col-sm-8 col-12 classifications-available">
+        <div class="classifications-available-div">
+            <h4 class="classifications-available-header">Race Classifications Available</h4>
+            <div class="row classification-tag-div" id="classification-div"></div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-12 ">
+        <div class="classifications-form-div">
+            <h4 class="classifications-form-header">Add Race Classification</h4>
+
+            <form>
+                <div id="error" style="color:red;"></div>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="name" name="name" data-rule-validname="true" autocomplete="off" />
+                </div>
+
+                <input type="button" id="add-classification" class="btn btn-primary" value="Add"/>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="disclaimer">
+    <h3>This is a test page. We would really like your feedback. Pleace @Html.ActionLink("Contact", "Contact", "Home", null, null) us.</h3>
+</div>
+
+
+@section Scripts {
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/raceclassification")
+
+    <script>
+        $(document).ready(function () {
+            RaceClassificationsController.init('#');
+        });
+    </script>
+}
+
+@Styles.Render("~/Content/custom/raceClassification.css")
+

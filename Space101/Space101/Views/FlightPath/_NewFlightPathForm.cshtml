@@ -1,0 +1,32 @@
+﻿@model Space101.ViewModels.FlightPathViewModels.ContainerFlightPathFormViewModel
+
+@Html.HiddenFor(fpv => fpv.FlightPathFormViewModel.FlightPathId)
+
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(fpv => fpv.FlightPathFormViewModel.DepartureId, new { @class = "col-form-label" })
+            @Html.DropDownListFor(fpv => fpv.FlightPathFormViewModel.DepartureId, new SelectList(Model.DeparturePlanets, "PlanetId", "Name"), "Select Departure", new { @class = "form-control", id = "departureId" })
+            @Html.ValidationMessageFor(fpv => fpv.FlightPathFormViewModel.DepartureId)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(fpv => fpv.FlightPathFormViewModel.DestinationId, new { @class = "col-form-label" })
+            @Html.DropDownListFor(fpv => fpv.FlightPathFormViewModel.DestinationId, new SelectList(Model.DestinationPlanets, "PlanetId", "Name"), "Select Destination", new { @class = "form-control", id = "destinationId" })
+            @Html.ValidationMessageFor(fpv => fpv.FlightPathFormViewModel.DestinationId)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+        <div>
+            <p><strong>Distance:</strong></p>
+            <p id="distance-display"></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+﻿.header {
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-top: -20px;
+    letter-spacing: 2px;
+}
+
+.header h2 {
+    font-size: 35px;
+    border: 1px solid white;
+    padding: 8px 5px;
+    width: 320px;
+    border-radius: 13px;
+}
+
+.header span {
+    padding: 8px 10px 8px 10px;
+    background-color: white;
+    color: black;
+    margin-right: 10px;
+    margin-left: -5px;
+    border-radius: 13px 0px 0px 13px;
+}
+
+.main {
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-div {
+    margin-bottom: 22px;
+    border: .5px solid rgba(255,255,255,.33);
+    width: 270px;
+    padding: 12px;
+    border-radius: 13px;
+    background-color: rgba(255,255,255,.1);
+    backdrop-filter: blur(1px);
+    transition: .3s;
+}
+
+.card-div:hover {
+    border: .5px solid rgba(255,255,255,.44);
+    background-color: rgba(255,255,255,.15);
+    backdrop-filter: blur(1.5px);
+}
+
+.field-div {
+    display: flex;
+    border: .5px solid rgba(255,255,255,.4);
+    padding: 6px 0px;
+    margin-bottom: 5px;
+    border-radius: 13px;
+    background-color: rgba(255,255,255,.13);
+}
+
+.field-div:hover {
+    border: .5px solid rgba(255,255,255,.66);
+    background-color: rgba(255,255,255,.2);
+}
+
+.field-div img {
+    height: 18px;
+    width: auto;
+}
+
+.btn-div {
+    padding: 0px;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+.details {
+    background-color: rgba(84, 105, 199,.55);
+    border-radius: 13px 0px 0px 13px;
+    padding: 5px 0px;
+    transition: .3s;
+}
+
+.details:hover {
+    background-color: rgba(84, 105, 199,.88);
+}
+
+.book {
+    background-color: rgba(181, 27, 89,.55);
+    border-radius: 0px 13px 13px 0px;
+    padding: 5px 0px;
+}
+
+.details a, .book a {
+    color: white;
+}
+
+.details a:hover, .book a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.book:hover {
+    background-color: rgba(181, 27, 89,.88);
+}
+
+.favor {
+    background-color: rgba( 179, 100, 61,.55);
+    border-radius: 13px;
+    padding: 5px 0px;
+    letter-spacing: 1px;
+}
+
+.favor:hover {
+    background-color: rgba(179, 100, 61,.88);
+}
+
+.unfavor {
+    background-color: rgba( 139, 88, 51,.55);
+    border-radius: 13px;
+    padding: 5px 0px;
+    letter-spacing: 1px;
+}
+
+.unfavor:hover {
+    background-color: rgba(139, 88, 51,.88);
+}
+
+
+@media screen and (max-width: 571px) {
+    .main {
+        justify-items: center;
+        justify-content: center;
+    }
+}

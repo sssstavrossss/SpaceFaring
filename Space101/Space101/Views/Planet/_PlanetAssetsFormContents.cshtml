@@ -1,0 +1,49 @@
+﻿@model Space101.ViewModels.PlanetViewModels.PlanetAssetsFormViewModel
+
+<div class="planet-assets-form-group">
+
+    <button type="button" class="btn btn-lg btn-block" data-toggle="collapse" data-target="#images">
+        Manage Planet Images
+    </button>
+    <div id="images" class="collapse">
+        <br />
+
+        <button id="add-file" class="btn btn-block btn-info" data-custom="image-0">Add New Images</button>
+
+        <br />
+
+        <div id="image-input-container" style="opacity:0; position:absolute; z-index:-1">
+
+        </div>
+
+        <div id="saved-images" class="panel panel-success">
+            <div class="panel-heading">
+                Saved Images
+            </div>
+            <div class="panel-body">
+                @for (var i = 0; i < Model.planetFileFormViewModels.Count; i++)
+                {
+                    if (Model.planetFileFormViewModels[i].Type == Space101.Enums.FileType.Image.ToString())
+                    {
+                    <div class="saved-image-container">
+                        @Html.HiddenFor(c => Model.planetFileFormViewModels[i].PlanetFileId)
+                        @Html.HiddenFor(c => Model.planetFileFormViewModels[i].DeleteIt)
+                        <button class="btn btn-danger btn-sm js-remove-image" data-btn-id="@i">Remove</button>
+                        <img class="img-thumbnail img-responsive planet-image-saved" data-img-id="@i" src="~/App_Assets/@Model.planetFileFormViewModels[i].Path" />
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                To be Uploaded . . .
+            </div>
+            <div id="image-preview" class="panel-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+<br />

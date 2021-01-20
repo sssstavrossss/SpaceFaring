@@ -1,0 +1,75 @@
+﻿@model Space101.ViewModels.StarShipViewModels.StarshipFormViewModel
+
+@{
+    ViewBag.Title = "StarshipForm";
+}
+<br />
+@if (Model.Action == "New")
+{
+    <h2>Create New Starship</h2>
+}
+else
+{
+    <h2>Edit Starship With Id: @Model.Id</h2>
+}
+<br />
+@using (Html.BeginForm("Save", "Starship"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(s => s.Id)
+
+<div row>
+    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(s => s.Model, new { @class = "col-form-label" })*
+            @Html.TextBoxFor(s => s.Model, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.Model)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(s => s.Manufacturer, new { @class = "col-form-label" })*
+            @Html.TextBoxFor(s => s.Manufacturer, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.Manufacturer)
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(s => s.PassengerCapacity, new { @class = "col-form-label" })*
+            @Html.TextBoxFor(s => s.PassengerCapacity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.PassengerCapacity)
+            <p class="help-block">Add an integer larger than 0.</p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(s => s.CargoCapacity, new { @class = "col-form-label" })*
+            @Html.TextBoxFor(s => s.CargoCapacity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.CargoCapacity)
+            <p class="help-block">Add an integer larger than 0.</p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(s => s.Length, new { @class = "col-form-label" })*
+            @Html.TextBoxFor(s => s.Length, new { @class = "form-control" })
+            @Html.ValidationMessageFor(s => s.Length)
+            <p class="help-block">Add an integer larger than 0.</p>
+        </div>
+    </div>
+
+</div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", "Starship", null, new { @class = "btn btn-danger" })
+    </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryvalCustomLocals")
+
+    <script>
+        $(document).ready(function () {
+            LocalCultureController.initLocalCulture();
+        });
+    </script>
+}

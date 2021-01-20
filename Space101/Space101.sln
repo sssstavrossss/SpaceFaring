@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Space101", "Space101\Space101.csproj", "{2631AF35-4625-4D80-9B59-CDA96587ACA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2631AF35-4625-4D80-9B59-CDA96587ACA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2631AF35-4625-4D80-9B59-CDA96587ACA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2631AF35-4625-4D80-9B59-CDA96587ACA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2631AF35-4625-4D80-9B59-CDA96587ACA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EDC4658-8993-420D-A07C-9CBA10926A03}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/spacefaring
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Space101\\Space101.csproj
+		SccProjectName1 = Space101
+		SccLocalPath1 = Space101
+	EndGlobalSection
+EndGlobal

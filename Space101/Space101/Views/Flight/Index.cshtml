@@ -1,0 +1,185 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.FlightViewModels.FlightViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Flights</h2>
+<br />
+@if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @Html.Hidden("IsAdmin")
+}
+
+@if (!Model.Any())
+{
+    <p>There are no flights yet</p>
+    if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+    {
+        @Html.ActionLink("Create flight", "New", "Flight", null, new { @class = "btn btn-primary" })
+    }
+}
+else
+{
+    <table class="table table-responsive table-striped table-bordered" id="flights">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlightId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BasePrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DepartureName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DestinationName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Distance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsVip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th>
+                        @Html.ActionLink("Create flight", "New", "Flight", null, new { @class = "btn btn-primary" })
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr id="@flight.FlightId">
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.FlightId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.Time)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.BasePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.DepartureName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.DestinationName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flight.Distance)
+                    </td>
+                    <td>
+                        @if (flight.IsVip)
+                        {
+                            @:YES
+                        }
+                        else
+                        {
+                            @:NO
+                        }
+                    </td>
+                    @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td class="flight-status-name">
+                            @Html.DisplayFor(modelItem => flight.Status)
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="flight-status-name">
+                            @Html.DisplayFor(modelItem => flight.Status)
+                        </td>
+                    }
+                    @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td>
+                            <div class="edit-btns-container">
+                                @Html.ActionLink("Edit", "Edit", "Flight", new { id = flight.FlightId }, new { @class = "btn btn-success", })
+                                <div class="btn-group status-container">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Status<span class="caret"></span></button>
+                                    <div class="dropdown-menu list-group flight-status-controler" data-flight-id="@flight.FlightId">
+                                        @foreach (var status in flight.FlightStatuses)
+                                        {
+                                            if (status.StatusName == flight.Status)
+                                            {
+                                                <button class="list-group-item disabled js-change-flight-status" data-status-id="@status.FlightStatusId">@status.StatusName</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="list-group-item js-change-flight-status" data-status-id="@status.FlightStatusId">@status.StatusName</button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="seat-btn">
+                                @Html.ActionLink("Manage Seats", "ManageSeats", "Flight", new { id = flight.FlightId }, new { @class = "btn btn-warning" })
+                            </div>
+                            <button class="btn btn-danger js-delete" data-flight-id="@flight.FlightId">Delete</button>
+                            @if (User.IsInRole(AvailableRoles.DatabaseManager))
+                            {
+                                <button class="btn btn-danger js-hard-delete" data-flight-id="@flight.FlightId">Hard Delete</button>
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/flight")
+        @Scripts.Render("~/bundles/signalR")
+
+        <script>
+            $(document).ready(function () {
+                FlightController.initializeDataTable('#flights');
+                FlightController.initDelete('#flights', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+                FlightController.initHardDelete('#flights', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+                FlightController.changeStatus('#flights', CustomBootBoxAlerts.confirmChangeStatus, null, CustomToasts.failChangeStatus);
+                FlightController.initializeAdminsFlightHub('#flights');
+            });
+        </script>
+    }
+}
+else
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/flight")
+        @Scripts.Render("~/bundles/signalR")
+
+        <script>
+            $(document).ready(function () {
+                FlightController.initializeDataTable('#flights');
+                FlightController.initDelete('#flights', CustomBootBoxAlerts.confirmDelete, CustomToasts.successManageModel, CustomToasts.failManageModel);
+                FlightController.changeStatus('#flights', CustomBootBoxAlerts.confirmChangeStatus, null, CustomToasts.failChangeStatus);
+                FlightController.initializeAdminsFlightHub('#flights');
+            });
+        </script>
+    }
+}
+
+

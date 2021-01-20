@@ -1,0 +1,82 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.TerrainViewModels.TerrainViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Terrains</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no terrains yet</p>
+    if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+    {
+        @Html.ActionLink("Create Terrain", "New", "Terrain", null, new { @class = "btn btn-primary" })
+    }
+}
+else
+{
+    <table class="table table-responsive table-striped table-bordered" id="terrains">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TerrainId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayColor)
+                </th>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th>
+                        @Html.ActionLink("Create Terrain", "New", "Terrain", null, new { @class = "btn btn-primary" })
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var terrain in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => terrain.TerrainId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => terrain.Name)
+                    </td>
+                    <td>
+                        <div class="color-displayer" style="background-color:@terrain.DisplayColor"></div>
+                        @Html.DisplayFor(modelItem => terrain.DisplayColor)
+                    </td>
+                    @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Terrain", new { id = terrain.TerrainId }, new { @class = "btn btn-success" })
+                            <button class="btn btn-danger js-delete" data-terrain-id="@terrain.TerrainId">Delete</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/terrain")
+
+        <script>
+            $(document).ready(function () {
+                TerrainController.init('#terrains', CustomBootBoxAlerts.confirmDelete, CustomToasts.successDelete, CustomToasts.failDelete);
+            });
+        </script>
+    }
+}
+
+
+

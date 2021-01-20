@@ -1,0 +1,147 @@
+﻿<div class="container-fluid navbar-buttons">
+
+    <div>
+        <a href="@Url.Action("Intro", "Home")" title="Intro Page" class="home-button">
+            <img alt="List View" src="@Url.Content("~/images/SpaceFaringLogoWeb.png")">
+        </a>
+    </div>
+
+    <div class="nav-btn-container">
+        <img src="~/images/menu.png" />
+    </div>
+
+    <div class="log-in">
+        @Html.Partial("_LoginPartial")
+    </div>
+
+</div>
+
+
+
+@if (User.IsInRole("ADMIN"))
+{
+
+    <div id="sidenav" class="sidenav text-center">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <ul class="">
+            <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "home-button" })</li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        Planet Control
+                    </button>
+                    <div class="drop-menu" style="display: none;">
+                        <ul>
+                            <li>@Html.ActionLink("Planets", "Index", "Planet")</li>
+                            <li>@Html.ActionLink("Climates", "Index", "Climate")</li>
+                            <li>@Html.ActionLink("Terrains", "Index", "Terrain")</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        Race Control
+                    </button>
+                    <div class="drop-menu" style="display: none;">
+                        <ul>
+                            <li>@Html.ActionLink("Race Classifications", "Index", "RaceClassification")</li>
+                            <li>@Html.ActionLink("Races", "Index", "Race")</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        Flight Control
+                    </button>
+                    <div class="drop-menu" style="display: none;">
+                        <ul>
+                            <li>@Html.ActionLink("Flights", "Index", "Flight")</li>
+                            <li>@Html.ActionLink("Flight Paths", "Index", "FlightPath")</li>
+                            <li>@Html.ActionLink("Starships", "Index", "Starship")</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        User Control
+                    </button>
+                    <div class="drop-menu" style="display: none;">
+                        <ul>
+                            <li>@Html.ActionLink("Users", "Index", "User")</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+
+    <div id="sidenav" class="sidenav text-center">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "home-button" })</li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("Planets", "Planets", "UserPlanet")
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("Races", "Races", "UserRace")
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("Flights", "Flights", "UserFlights")
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="user-sidenav" class="user-sidenav text-center">
+        <a href="javascript:void(0)" class="user-closebtn">&times;</a>
+        <ul>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("Manage", "Index", "Manage")
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("My Orders", "UserOrders", "User")
+                    </button>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="drop-btn">
+                        @Html.ActionLink("Favotires", "UserFavorites", "User")
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+}
+
+
+
+
+@Styles.Render("~/Content/custom/navbar.css")

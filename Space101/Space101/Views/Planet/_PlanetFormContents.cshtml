@@ -1,0 +1,69 @@
+﻿@model Space101.ViewModels.PlanetViewModels.PlanetFormViewModel
+
+@Html.HiddenFor(p => p.PlanetFormViewModelId)
+
+<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name, new { @class = "col-form-label" })*
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control input-md", placeholder = "e.g. Tattooine" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.CoordX, new { @class = "col-form-label" })
+        @Html.TextBoxFor(p => p.CoordX, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.CoordX)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.CoordY, new { @class = "col-form-label" })
+        @Html.TextBoxFor(p => p.CoordY, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.CoordY)
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+    <div class="form-group">
+        @Html.LabelFor(p => p.Title, new { @class = "col-form-label" })
+        @Html.TextBoxFor(p => p.Title, new { @class = "form-control", placeholder = "e.g. The Hutts are the only law that matters on Tatooine." })
+        @Html.ValidationMessageFor(p => p.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Gravity, new { @class = "col-form-label" })
+        @Html.TextBoxFor(p => p.Gravity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Gravity)
+        <p class="help-block">Add a number between 0 and 10. Add -1 for no info.</p>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.SurfaceWater, new { @class = "col-form-label" })
+        @Html.TextBoxFor(p => p.SurfaceWater, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.SurfaceWater)
+        <p class="help-block">Add an integer between 0 and 100. Add -1 for no info.</p>
+    </div>
+</div>
+
+<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+    <div class="form-group">
+        <div class="form-group">
+            @Html.Label("Avatar", new { @class = "col-form-label" })
+            @Html.TextBoxFor(p => p.UploadedAvatar, new { @class = "form-control", @type = "file", @accept = ".jpg, .jpeg, .png" })
+            @Html.ValidationMessageFor(p => p.UploadedAvatar)
+            <p class="help-block">Upload an image to use as planet's avatar.</p>
+        </div>
+
+        @Html.HiddenFor(a => Model.AvatarStream)
+    <div id="avatar-preview" class="panel panel-default">
+        @if (Model.AvatarStream.Length > 0)
+        {
+            <img class="img-thumbnail img-responsive img-rounded" src="data:image/jpg;base64,@(Convert.ToBase64String(Model.AvatarStream))" />
+        }
+    </div>
+    </div>
+</div>
+
+
+
+
+

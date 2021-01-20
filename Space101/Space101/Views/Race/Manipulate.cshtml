@@ -1,0 +1,230 @@
+﻿@model Space101.ViewModels.RaceViewModels.RaceFormViewModel
+
+<br />
+@if (Model.ID == 0)
+{
+    <h2>Create New Race</h2>
+}
+else
+{
+    <h2>Edit Race With Id: @Model.ID</h2>
+}
+<br />
+
+@using (Html.BeginForm("Manipulate", "Race", null, FormMethod.Post, new { enctype = "multipart/form-data" , id = "race-form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(r => r.ID)
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(r => r.Name)*
+                @Html.TextBoxFor(r => r.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.Name, "", new { @class = "text-danger", placeholder = "e.g. Human" })
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(r => r.AverageHeight)
+                @Html.TextBoxFor(r => r.AverageHeight, new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.AverageHeight, "", new { @class = "text-danger" })
+                <p class="help-block">Add a height between 40cm and 600cm.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.Label("Avatar", new { @class = "col-form-label" })
+                    @Html.TextBoxFor(p => p.UploadedAvatar, new { @class = "form-control", @type = "file", @accept = ".jpg, .jpeg, .png" })
+                    @Html.ValidationMessageFor(p => p.UploadedAvatar)
+                    <p class="help-block">Upload an image to use as race's avatar.</p>
+                </div>
+
+                @Html.HiddenFor(a => Model.Avatar)
+                <div id="avatar-preview" class="panel panel-default">
+                    @if (Model.Avatar.Length > 0)
+                    {
+                        <img class="img-thumbnail img-responsive img-rounded" src="data:image/jpg;base64,@(Convert.ToBase64String(Model.Avatar))" />
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="race-habitats-form-group">
+                <button type="button" class="btn btn-lg btn-block" data-toggle="collapse" data-target="#habitats">
+                    Manage Planet Habitats
+                </button>
+                <div id="habitats" class="collapse">
+                    <br />
+                    <ul class="list-group">
+                        @if (Model.Planets.Count == 0)
+                        {
+                            <li>
+                                <i>There are no available planets.</i>
+                            </li>
+                        }
+                        @for (int i = 0; i < Model.Planets.Count; i++)
+                        {
+                            <li class="list-group-item">
+                                @Html.CheckBoxFor(m => Model.Planets[i].IsAssigned)
+                                @Html.HiddenFor(m => Model.Planets[i].ID)
+                                @Html.HiddenFor(m => Model.Planets[i].Name)
+                                @Model.Planets[i].Name
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(r => r.RaceClassificationID, new { @class = "col-form-label" })*
+                @Html.DropDownListFor(r => r.RaceClassificationID,
+                    new SelectList(Model.RaceClassificationList, "RaceClassificationID", "Name"),
+                    "Select Race Classification",
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.RaceClassificationID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(r => r.Details, new { @class = "col-form-label" })
+                @Html.TextAreaFor(r => r.Details, new { @class = "form-control", placeholder = "Add information about the race.", rows = 5 })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Cancel", "Index", "Race", null, new { @class = "btn btn-danger" })
+    </div>
+}
+
+@*<div class="container">
+    <div class="row">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (Model.ID == 0)
+        {
+            <h2>Create a new Race</h2>
+        }
+        else
+        {
+            <h2>Update @Model.Name Race</h2>
+        }
+
+        @using (Html.BeginForm("Manipulate", "Race", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(r => r.ID)
+
+            <div class="form-group">
+                @Html.LabelFor(r => r.Name)
+                @Html.TextBoxFor(r => r.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    @Html.Label("Avatar", new { @class = "col-form-label" })
+                    @Html.TextBoxFor(r => r.UploadedAvatar, new { @class = "form-control", @type = "file", @accept = ".jpg, .jpeg, .png" })
+                </div>
+
+                @Html.HiddenFor(r => Model.Avatar)
+                <div id="avatar-preview">
+                    @if (Model.Avatar.Length > 0)
+                    {
+                        <img class="img-thumbnail img-responsive" src="data:image/jpg;base64,@(Convert.ToBase64String(Model.Avatar))" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(r => r.RaceClassificationID)
+                @Html.DropDownListFor(r => r.RaceClassificationID,
+                    new SelectList(Model.RaceClassificationList, "RaceClassificationID", "Name"),
+                    "Select Race Classification",
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.RaceClassificationID, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(r => r.AverageHeight)
+                @Html.TextBoxFor(r => r.AverageHeight, new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.AverageHeight, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="checkbox">
+                @Html.LabelFor(r => r.Planets)
+                <br />
+                @if (Model.Planets.Any())
+                {
+                    <ul>
+                        @for (int i = 0; i < Model.Planets.Count; i++)
+                        {
+                            <li>
+                                @Html.CheckBoxFor(m => Model.Planets[i].IsAssigned)
+                                @Html.HiddenFor(m => Model.Planets[i].ID)
+                                @Html.HiddenFor(m => Model.Planets[i].Name)
+                                @Model.Planets[i].Name
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>There are no Planets!</span>
+                }
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(r => r.Details)
+                @Html.TextAreaFor(r => r.Details, new { @class = "form-control" })
+                @Html.ValidationMessageFor(r => r.Details, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+        }
+
+        <hr />
+
+    </div>
+</div>*@
+
+@section scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/race")
+
+    <script>
+        $(document).ready(function () {
+            RaceController.initializeAvatarPreview();
+        });
+    </script>
+
+}
+
+

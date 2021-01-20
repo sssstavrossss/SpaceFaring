@@ -1,0 +1,71 @@
+﻿@model Space101.ViewModels.UserOrderViewModels.UserOrderPagingViewModel
+
+
+<h2>
+    @if (Model.Orders.ToList().Count > 0)
+    {
+        <span class="order-number">@Model.Orders.ToList().Count</span>
+    }
+    else
+    {
+        @:No
+    }
+    Orders
+</h2>
+
+@if (Model.Orders.ToList().Count > 0)
+{
+    foreach (var order in Model.Orders)
+    {
+        <div class="row order-row" id="order[@order.OrderId]">
+            <div class="col-xs-6">
+                <div class="order-div">
+                    <div class="order-details">
+                        <div class="order-details-id">
+                            <div><img src="~/images/parchment.png" alt="planet logo"/></div>
+                            <div>Order: </div>
+                            <div>@order.OrderId</div>
+                        </div>
+                        <div class="order-details-payment">
+                            <div><img src="/images/attach.png" alt="planet logo" /></div>
+                            <div>Payment: </div>
+                            <div>@order.InvoiceId</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="order-div">
+                    <div class="order-details">
+                        <div class="order-details-date">
+                            <div><img src="/images/timetable.png" alt="date logo" /></div>
+                            <div>@order.CreationDate</div>
+                        </div>
+                        <div class="order-details-price">
+                            <div><img src="/images/dollar.png" alt="dollar logo" /></div>
+                            <div>Total Price: </div>
+                            <div>@order.TotalPrice</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 order-view-detail-super-div">
+                <div class="order-view-detail-div"><a href="/Order/PrintOrderData/@order.OrderId"><p class="order-view-detail-btn" style="margin-bottom: 0px;">View <br /> Details</p></a></div>
+            </div>
+        </div>
+    }
+}
+
+<div class="row text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.PageCount(); i++)
+        {
+            <li class="@(i == Model.CurrentPage ? "page-item active" : "page-item")">
+                <a class="page-link" href="@Url.Action("UserOrders", new { page = i })">@i</a>
+            </li>
+
+        }
+    </ul>
+</div>
+
+@Styles.Render("~/Content/custom/userOrders.css")

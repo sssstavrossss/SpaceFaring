@@ -1,0 +1,26 @@
+﻿@model List<Space101.ViewModels.ClimateZoneViewModels.ClimateZoneViewModel>
+
+<div class="planet-climates-form-group">
+        <button type="button" class="btn btn-lg btn-block" data-toggle="collapse" data-target="#climates">
+            Manage Climates
+        </button>
+        <div id="climates" class="collapse">
+            <br />
+            <ul class="list-group">
+                @if (Model.Count == 0)
+                {
+                    <li>
+                        <i>There are no available climates.</i>
+                    </li>
+                }
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <li class="list-group-item">
+                        @Html.HiddenFor(item => Model[i].ClimateId)
+                        @Html.CheckBoxFor(item => Model[i].PlanetHasClimate) @Model[i].ClimateName
+                    </li>
+                }
+            </ul>
+        </div>
+</div>
+<br />

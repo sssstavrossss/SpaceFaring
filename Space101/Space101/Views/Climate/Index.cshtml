@@ -1,0 +1,79 @@
+﻿@using Space101.Helper_Models
+
+@model IEnumerable<Space101.ViewModels.ClimateViewModels.ClimateViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Climates</h2>
+<br />
+@if (!Model.Any())
+{
+    <p>There are no climates yet</p>
+    if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+    {
+        @Html.ActionLink("Create Climate", "New", "Climate", null, new { @class = "btn btn-primary" })
+    }
+}
+else
+{
+    <table class="table table-responsive table-striped table-bordered" id="climates">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClimateId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisplayColor)
+                </th>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+                    <th>
+                        @Html.ActionLink("Create Climate", "New", "Climate", null, new { @class = "btn btn-primary" })
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var climate in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => climate.ClimateId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => climate.Name)
+                </td>
+                <td>
+                    <div class="color-displayer" style="background-color:@climate.DisplayColor"></div>
+                    @Html.DisplayFor(modelItem => climate.DisplayColor)
+                </td>
+                @if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+                {
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Climate", new { id = climate.ClimateId }, new { @class = "btn btn-success" })
+                <button class="btn btn-danger js-delete" data-climate-id="@climate.ClimateId">Delete</button>
+            </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+@if (User.IsInRole(AvailableRoles.Admin) || User.IsInRole(AvailableRoles.DatabaseManager))
+{
+    @section scripts{
+
+        @Scripts.Render("~/bundles/climate")
+
+        <script>
+            $(document).ready(function () {
+                ClimateController.init('#climates', CustomBootBoxAlerts.confirmDelete, CustomToasts.successDelete, CustomToasts.failDelete);
+            });
+        </script>
+    }
+}
+

@@ -1,0 +1,143 @@
+﻿body {
+    background-color: rgb(9, 12, 31);
+    color: white;
+    overflow: hidden;
+}
+
+.classification-body {
+    margin: 35px 0px;
+    padding: 20px 0px 45px 0px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(5px);
+    border: .5px solid rgba(255, 255, 255, .2);
+}
+
+.classification-header-div {
+    background-color: rgba(255, 255, 255, .88);
+    padding: 5px 0px 12px 0px;
+    color: black;
+    margin: 0 auto;
+    margin-bottom: 33px;
+    margin-top: 10px;
+}
+
+.classifications-available-header,
+.classifications-form-header {
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+    color: black;
+    margin: 0px 0px 15px 0px;
+    padding: 12px 15px;
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255,0.25);
+}
+
+.classification-tag-div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 15px;
+    font-size: 15px;
+}
+
+form{
+    padding: 5px 15px;
+}
+
+form label {
+    color: black;
+}
+
+    form input {
+        padding: 7px 13px;
+        color: black;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid white;
+        border-radius: 0px 10px 10px 0px;
+    }
+
+        form input:focus {
+            border-radius: 10px;
+            border: 1px solid black;
+            outline: none;
+        }
+
+.classification-tag {
+    color: black;
+    padding: 8px 16px;
+    margin: 6px 12px;
+    background-color: #f3f3f3;
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255,0.2);
+    transition: ease 0.1s;
+    transform: scale(0.96);
+    cursor: default;
+}
+
+    .classification-tag:hover {
+        background-color: #E6EAFF;
+        box-shadow: 0px 0px 10px 1px rgba(255, 255, 255,0.3);
+        transform: scale(1);
+    }
+
+.classification-tag span {
+    margin-left: 8px;
+    transition: ease .2s;
+}
+
+.classification-tag span:hover {
+    color: orangered;
+    cursor: pointer;
+}
+
+
+.classifications-available-div,
+.classifications-form-div {
+    background-color: red;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    border: .5px solid rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(3px);
+    min-height: 280px;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: .5px solid rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.form-group label {
+    margin-top: 9px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.error {
+    color: orangered;
+}
+
+#error {
+    height: 30px;
+}
+
+.modal-content {
+    background-color: rgb(9, 12, 31);
+}
+
+.bootbox-body {
+    color: white;
+}
+
+.bootbox-close-button {
+    color: white;
+}
+
+.bootbox-close-button:hover {
+    color: coral;
+    opacity: 0.3;
+}

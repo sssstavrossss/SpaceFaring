@@ -1,0 +1,183 @@
+﻿.body {
+    background-color: #2b3e50;
+}
+
+.details-content {
+    background-color: #2b3e50;
+    width: 100%;
+    color: #ebebeb;
+    border-radius:2%;
+}
+
+.details-content .details-header {
+    margin-top: 21px;
+    margin-bottom: 21px;
+    margin-left:40px;
+    position: relative;
+}
+
+    .details-content .details-header .planet-state {
+        position: absolute;
+        right: 0px;
+        bottom: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 0px 15px;
+        background-color: #2b3e50;
+        font-size: 20px;
+    }
+
+.details-content #planet-images {
+    margin: 21px 0px;
+}
+
+    .details-content #planet-images #planet-carousel .item {
+        height: 500px;
+        background-color: rgba(0,0,0,0.2);
+        padding: 10px;
+    }
+
+        .details-content #planet-images #planet-carousel .item img {
+            height: 100%;
+            width: 100%;
+            object-fit: scale-down;
+        }
+
+        .details-content #planet-images #planet-carousel .item .carousel-caption p {
+            background-color: rgba(0,0,0,0.45);
+            border-radius: 5px;
+            padding: 5px;
+            width: 500px;
+            margin: auto;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+    .details-content > main {
+        margin: 10px 40px;
+    }
+
+.details-content #planet-details {
+    margin: 50px 0px;
+}
+
+    .details-content #planet-details .geeky-data .progress .earth {
+        width: 2px;
+        height: 21px;
+        position: absolute;
+        border-left: 6px solid #bd4f4f;
+    }
+
+        .details-content #planet-details .geeky-data .progress .earth:after {
+            content: 'Earth';
+            position: relative;
+            top: -40px;
+            left: -26px;
+            padding: 5px;
+            border: 2px solid #bd4f4f;
+            color: #bd4f4f;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .details-content #planet-details .geeky-data .progress .earth:hover:after {
+            display: inline-block;
+        }
+
+        .details-content #planet-details .geeky-data .progress .earth#earth-gravity {
+            left: 10%;
+        }
+
+        .details-content #planet-details .geeky-data .progress .earth#earth-surface-water {
+            left: 71%;
+        }
+
+        .details-content #planet-details .geeky-data .progress .earth#earth-rotation-period {
+            left: 24%;
+        }
+
+        .details-content #planet-details .geeky-data .progress .earth#earth-orbital-period {
+            left: 36.5%;
+        }
+
+    .details-content #planet-details .geeky-data .fa {
+        margin: 21px;
+        font-size: 32px;
+        color: #bd4f4f;
+    }
+
+    .details-content #planet-details .geeky-data #population, #planet-details .geeky-data #diameter {
+        font-size: 21px;
+        white-space: nowrap;
+    }
+
+    .details-content #planet-details .geeky-data .climates, #planet-details .geeky-data .terrains {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+        .details-content .geeky-data .climates .list-group, #planet-details .geeky-data .terrains .list-group {
+            margin-top: 21px;
+            margin-left: auto;
+        }
+
+        .details-content #planet-details .geeky-data .climates .title, #planet-details .geeky-data .terrains .title {
+            border: 2px solid rgba(0,0,0,0.2);
+            padding: 5px 20px;
+            background-color: none;
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+
+        .details-content #planet-details .geeky-data .climates .fa-circle-o, #planet-details .geeky-data .terrains .fa-circle-o {
+            font-size: 20px;
+            margin: 5px;
+        }
+
+    .details-content #planet-details .geeky-data {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .details-content #planet-details .planet-races .race-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 21px;
+        margin-top: 21px;
+        text-align: center;
+    }
+
+    .details-content #planet-details .planet-races img {
+        align-self: center;
+        width: 150px;
+        border: solid 5px #181818;
+    }
+
+    .details-content .list-group-item {
+        background-color: #4e5d6c;
+    }
+
+    .details-content .progress {
+        background-color: #4e5d6c;
+    }
+
+    .details-content #planet-culture.panel,
+    .details-content #planet-history.panel,
+    .details-content #planet-sights.panel {
+        margin: 55px 0px;
+    }
+
+    .details-content #planet-culture .panel-heading,
+    .details-content #planet-history .panel-heading,
+    .details-content #planet-sights .panel-heading {
+        font-size: 22px;
+    }
+
+    .details-content #planet-culture .panel-body,
+    .details-content #planet-history .panel-body,
+    .details-content #planet-sights .panel-body {
+        background-color: #c3c3c3;
+        color: #312323;
+        font-size: 18px;
+    }
